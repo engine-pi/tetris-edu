@@ -14,7 +14,7 @@ Beispielsweise wird aus der URL
 
     https://pirckheimer-gymnasium.de/tetris
 
-<div style="text-align: right">der Paketname:</div>
+der Paketname:
 
     de.pirckheimer_gymnasium.tetris
 
