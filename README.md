@@ -18,7 +18,7 @@ der Paketname:
 
     de.pirckheimer_gymnasium.tetris
 
-<small style="text-align: left;">Quelle: [baeldung.com](https://www.baeldung.com/java-packages#1-naming-conventions)</small>
+<small>Quelle: [baeldung.com](https://www.baeldung.com/java-packages#1-naming-conventions)</small>
 
 ## Importe von Java-Klassen aus Paketen
 
