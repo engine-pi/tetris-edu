@@ -18,7 +18,7 @@ der Paketname:
 
     de.pirckheimer_gymnasium.tetris
 
-Quelle: https://www.baeldung.com/java-packages#1-naming-conventions
+<small style="text-align: left;">Quelle: [baeldung.com](https://www.baeldung.com/java-packages#1-naming-conventions)</small>
 
 ## Importe von Java-Klassen aus Paketen
 
@@ -30,14 +30,12 @@ zu können, muss man sie in das gewünschte Projekt importieren. In Java funktio
 
 __Syntax__
 
-`import <paketname>.<klassenname>;` Importiert nur die gewünschte Klasse des angesprochenen Paketes.
-
+`import <paketname>.<klassenname>;` Importiert nur die gewünschte Klasse des angesprochenen Paketes.<br>
 `import <paketname>.*;` Importiert sämtliche Klassen des angesprochenen Paketes.
 
 __Beispiel__
 
-`import java.util.Random;` Importiert die Klasse Random des Paketes java.util.
-
+`import java.util.Random;` Importiert die Klasse Random des Paketes java.util.<br>
 `import java.util.*;` Importiert das vollständige Paket java.util.
 
-Quelle: Klett, Informatik 2, 2021, Seite 275
+<small>Quelle: Klett, Informatik 2, 2021, Seite 275</small>
