@@ -1,5 +1,22 @@
 # Tetris
 
+## IDE - Integrated Development Environment (integrierte Entwicklungsumgebung)
+
+Eine integrierte Entwicklungsumgebung (IDE, von englisch integrated development environment) ist 
+eine Sammlung von Computerprogrammen, mit denen die Aufgaben der Softwareentwicklung 
+möglichst ohne Medienbrüche bearbeitet werden können.
+
+<small>Quelle: [wikipedia.org](https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung)</small>
+
+### Bekannte IDEs 
+
+* [BlueJ](https://www.bluej.org/): Reduzierte IDE für pädagogische Zwecke
+* [Visual Studio Code](https://code.visualstudio.com): von Microsoft entwickelt, für alle Sprachen einsetzbar, wegen vieler Erweiterungen, läuft auf Google Chrome
+* [Eclipse](https://www.eclipse.org/downloads) 
+* [IntelliJ IDEA](https://www.jetbrains.com/de-de/idea): auf Java spezialisiert
+
+Wir setzen die [Community Edition von IntelliJ](https://www.jetbrains.com/de-de/idea/download/other.html) ein. 
+
 ## Java-Paketnamen
 
 Um Pakete mit gleichem Namen zu vermeiden, haben sich in der Java-Welt folgende 
@@ -18,7 +35,7 @@ der Paketname:
 
     de.pirckheimer_gymnasium.tetris
 
-<small style="text-align: right">Quelle: [baeldung.com](https://www.baeldung.com/java-packages#1-naming-conventions)</small>
+<small>Quelle: [baeldung.com](https://www.baeldung.com/java-packages#1-naming-conventions)</small>
 
 ## Importe von Java-Klassen aus Paketen
 
