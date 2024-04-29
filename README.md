@@ -34,6 +34,8 @@ einstellt wird.[^nintendo.com]
 [^strategywiki.org] https://strategywiki.org/wiki/Tetris/Rotation_systems
 https://laroldsjubilantjunkyard.com/tutorial/tetris/ -->
 
+![Blueprint](https://github.com/Josef-Friedrich/tetris-like-game/blob/main/misc/Blueprint.svg)
+
 ### Farben
 
 4 Farben
