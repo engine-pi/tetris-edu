@@ -36,7 +36,7 @@ public class Tetris
 
     /**
      * Schaltet den Entwicklermodus ein oder aus. Im Entwicklermodus werden zum
-     * Beispiel statt den normalen Blockbilder Zahlen angezeigt.
+     * Beispiel statt den normalen Blockbildern Zahlen angezeigt.
      */
     public static boolean DEBUG = false;
 
