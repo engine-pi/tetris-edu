@@ -150,6 +150,16 @@ möglichst ohne Medienbrüche bearbeitet werden können.
 
 Wir setzen die [Community Edition von IntelliJ](https://www.jetbrains.com/de-de/idea/download/other.html) ein.
 
+### Game-Engine
+
+Als Game-Engine kommt die [Engine Alpha](https://engine-alpha.org) zum Einsatz. 
+Der [Quell-Code](https://github.com/engine-alpha/engine-alpha) ist 
+auf Github gehostet.
+
+https://github.com/Josef-Friedrich/engine-omega
+
+https://central.sonatype.com/artifact/rocks.friedrich.engine_omega/engine-omega
+
 ### Java-Paketnamen
 
 Um Pakete mit gleichem Namen zu vermeiden, haben sich in der Java-Welt folgende
@@ -157,7 +167,7 @@ Konvention für Paketnamen herausgebildet:
 
 - Paketnamen bestehen nur aus Kleinbuchstaben und Unterstrichen `_` (um sie von Klassen zu unterscheiden).
 - Paketnamen sind durch Punkte getrennt.
-- Der Anfang des Paketnames wird durch die Organisation bestimmt, die sie erstellt.
+- Der Anfang des Paketnamens wird durch die Organisation bestimmt, die sie erstellt.
 
 Um den Paketnamen auf der Grundlage einer Organisation zu bestimmen, wird die URL der Organisation umgedreht.
 Beispielsweise wird aus der URL
