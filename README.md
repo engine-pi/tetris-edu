@@ -22,7 +22,7 @@ schneller fallen.
 Im _„B-Type“_-Modus müssen 25 Reihen beseitigt werden, um den Sieg
 zu erringen. Der Schwierigkeitsgrad kann erhöht, indem
 die Fallgeschwindigkeit heraufsetzt und mehr Zufalls-Tetriminos
-einstellt wird.[^nitendo.com]
+einstellt wird.[^nintendo.com]
 
 <!-- ### Drehung
 
@@ -152,13 +152,33 @@ Wir setzen die [Community Edition von IntelliJ](https://www.jetbrains.com/de-de/
 
 ### Game-Engine
 
-Als Game-Engine kommt die [Engine Alpha](https://engine-alpha.org) zum Einsatz. 
-Der [Quell-Code](https://github.com/engine-alpha/engine-alpha) ist 
-auf Github gehostet.
+Als Game-Engine kommt die [Engine Alpha](https://engine-alpha.org) zum Einsatz.
+Der [Quell-Code](https://github.com/engine-alpha/engine-alpha) ist
+auf Github gehostet. Die Engine Alpha wurde und wird von
+[Michael Andonie](https://github.com/andonie)
+und [Niklas Keller](https://github.com/kelunik) entwickelt.
 
-https://github.com/Josef-Friedrich/engine-omega
+Wir setzen jedoch einen Fork der Engine Alpha ein,
+genannt [Engine Omega](https://github.com/Josef-Friedrich/engine-omega).
+Im Gegensatz zur originalen Engine ist die
+[Engine Omega](https://central.sonatype.com/artifact/rocks.friedrich.engine_omega/engine-omega)
+über das wichtigste Repository für Java-Projekte das sogenannte
+[Maven Central Repository](https://central.sonatype.com) abrufbar.
 
-https://central.sonatype.com/artifact/rocks.friedrich.engine_omega/engine-omega
+In der Projekt-Datei `pom.xml` ist die Engine Omega als
+Abhängigkeit (`dependency`) hinterlegt.
+
+```xml
+<project>
+  <dependencies>
+    <dependency>
+      <groupId>rocks.friedrich.engine_omega</groupId>
+      <artifactId>engine-omega</artifactId>
+      <version>0.2.0</version>
+    </dependency>
+  </dependencies>
+</project>
+```
 
 ### Java-Paketnamen
 
@@ -200,6 +220,6 @@ zu können, muss man sie in das gewünschte Projekt importieren. In Java funktio
 
 <small>Quelle: Klett, Informatik 2, 2021, Seite 275</small>
 
-[^nitendo.com]: https://www.nintendo.com/de-de/Spiele/Game-Boy/TETRIS--275924.html
+[^nintendo.com]: https://www.nintendo.com/de-de/Spiele/Game-Boy/TETRIS--275924.html
 [^gimp-color-picker]: Ermittelt mit dem GIMP Color Picker mittels eines Bildschirmfotos des Videos https://www.youtube.com/watch?v=BQwohHgrk2s
 [^strategywiki.org]: https://strategywiki.org/wiki/Tetris/Rotation_systems
