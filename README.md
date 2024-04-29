@@ -1,25 +1,32 @@
-# Tetris
+# Tetris auf dem Gameboy
 
-## IDE - Integrated Development Environment (integrierte Entwicklungsumgebung)
+Nachbau des Spiels Tetris auf dem klassischem Gameboy mit Hilfe von Java und
+der Engine Alpha.
 
-Eine integrierte Entwicklungsumgebung (IDE, von englisch integrated development environment) ist 
-eine Sammlung von Computerprogrammen, mit denen die Aufgaben der Softwareentwicklung 
+## Java
+
+### Java-Entwicklungsumgebung: IDE - Integrated Development Environment (integrierte Entwicklungsumgebung)
+
+Eine integrierte Entwicklungsumgebung (IDE, von englisch integrated development environment) ist
+eine Sammlung von Computerprogrammen, mit denen die Aufgaben der Softwareentwicklung
 möglichst ohne Medienbrüche bearbeitet werden können.
 
 <small>Quelle: [wikipedia.org](https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung)</small>
 
-### Bekannte IDEs 
+#### Bekannte IDEs
 
 * [BlueJ](https://www.bluej.org/): Reduzierte IDE für pädagogische Zwecke
 * [Visual Studio Code](https://code.visualstudio.com): von Microsoft entwickelt, für alle Sprachen einsetzbar, wegen vieler Erweiterungen, läuft auf Google Chrome
-* [Eclipse](https://www.eclipse.org/downloads) 
+* [Eclipse](https://www.eclipse.org/downloads)
 * [IntelliJ IDEA](https://www.jetbrains.com/de-de/idea): auf Java spezialisiert
 
-Wir setzen die [Community Edition von IntelliJ](https://www.jetbrains.com/de-de/idea/download/other.html) ein. 
+Wir setzen die [Community Edition von IntelliJ](https://www.jetbrains.com/de-de/idea/download/other.html) ein.
 
-## Java-Paketnamen
+### Game-Eingine
 
-Um Pakete mit gleichem Namen zu vermeiden, haben sich in der Java-Welt folgende 
+### Java-Paketnamen
+
+Um Pakete mit gleichem Namen zu vermeiden, haben sich in der Java-Welt folgende
 Konvention für Paketnamen herausgebildet:
 
 * Paketnamen bestehen nur aus Kleinbuchstaben und Unterstrichen `_` (um sie von Klassen zu unterscheiden).
@@ -27,7 +34,7 @@ Konvention für Paketnamen herausgebildet:
 * Der Anfang des Paketnames wird durch die Organisation bestimmt, die sie erstellt.
 
 Um den Paketnamen auf der Grundlage einer Organisation zu bestimmen, wird die URL der Organisation umgedreht.
-Beispielsweise wird aus der URL 
+Beispielsweise wird aus der URL
 
     https://pirckheimer-gymnasium.de/tetris
 
@@ -37,7 +44,7 @@ der Paketname:
 
 <small>Quelle: [baeldung.com](https://www.baeldung.com/java-packages#1-naming-conventions)</small>
 
-## Importe von Java-Klassen aus Paketen
+### Importe von Java-Klassen aus Paketen
 
 Java verfügt über unzählige vorgefertigte Klassen und Schnittstellen. Thematisch zusammengehörende Klassen und
 Schnittstellen werden zu einem Paket (*package*) zusammengefasst. Die so entstehende Java-Bibliothek ist riesig und
