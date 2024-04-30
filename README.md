@@ -34,13 +34,13 @@ einstellt wird.[^nintendo.com]
 [^strategywiki.org] https://strategywiki.org/wiki/Tetris/Rotation_systems
 https://laroldsjubilantjunkyard.com/tutorial/tetris/ -->
 
-![Blueprint](https://github.com/Josef-Friedrich/tetris-like-game/blob/main/misc/Blueprint.svg)
+![Blueprint](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/Blueprint.svg)
 
 ### Farben
 
 4 Farben
 
-![](https://github.com/Josef-Friedrich/tetris-like-game/blob/main/misc/graphics/Colors.svg)
+![](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/Colors.svg)
 
 | deutsch | englisch | hex grün[^gimp-color-picker] | grau   | grau          |
 | ------- | -------- | ---------------------------- | ------ | ------------- |
@@ -55,34 +55,34 @@ https://en.wikipedia.org/wiki/List_of_video_game_console_palettes#Game_Boy
 
 `CopyrightScene`
 
-![](https://github.com/Josef-Friedrich/tetris-like-game/blob/main/misc/graphics/screenshots/CopyrightScreen.png)
+![CopyrightScene](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/screenshots/CopyrightScreen.png)
 
 `TitleScene`
 
-![](https://github.com/Josef-Friedrich/tetris-like-game/blob/main/misc/graphics/screenshots/TitleScreen.png)
+![TitleScene](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/screenshots/TitleScreen.png)
 
 `MainMenuScene`
 
-![](https://github.com/Josef-Friedrich/tetris-like-game/blob/main/misc/graphics/screenshots/MainMenuScreen.png)
+![MainMenuScene](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/screenshots/MainMenuScreen.png)
 
 `LevelSelectScene`
 
-![](https://github.com/Josef-Friedrich/tetris-like-game/blob/main/misc/graphics/screenshots/LevelSelectScreen.png)
+![LevelSelectScene](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/screenshots/LevelSelectScreen.png)
 
 `IngameScene`
 
-![](https://github.com/Josef-Friedrich/tetris-like-game/blob/main/misc/graphics/screenshots/IngameScreen.png)
+![IngameScene](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/screenshots/IngameScreen.png)
 
 Das Spielfeld ist `8x18` groß. Der linke Rand ist `2` und der rechte
 Rand `10` Blöcke breit.
 
-`GameOverScreen`
+`GameOverScene`
 
-![](https://github.com/Josef-Friedrich/tetris-like-game/blob/main/misc/graphics/screenshots/GameOverScreen.png)
+![GameOverScene](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/screenshots/GameOverScreen.png)
 
-`RussianDancersScreen`
+`RussianDancersScene`
 
-![](https://github.com/Josef-Friedrich/tetris-like-game/blob/main/misc/graphics/screenshots/RussianDancersScreen.gif)
+![RussianDancersScene](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/screenshots/RussianDancersScreen.gif)
 
 ### Emulation
 
