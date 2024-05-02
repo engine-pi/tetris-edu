@@ -7,7 +7,7 @@ der Engine Alpha.
 
 ### Bildschirmauflösung
 
-Der Bildschirmausschnitt des Gameboys ist `160x144` (Breite `x` Höhe)
+Der Bildschirmausschnitt des klassische Gameboys ist `160x144` (Breite `x` Höhe)
 Pixel. Ein Block hat die Größe `8x8`. Der Bildschirmausschnitt lässt
 sich als mit `20x18` Blöcken ausfüllen.
 
@@ -15,14 +15,13 @@ sich als mit `20x18` Blöcken ausfüllen.
 
 Es gibt zwei Hauptmodi: _„A-Type“_ und _„B-Type“_.
 
-Im _„A-Type“_-Modus muss eine möglichst hohe Punktzahl zu erreicht, indem
-Blockreihen auflöst werden, während die Tetriminos schneller und
-schneller fallen.
+Im _„A-Type“_-Modus muss eine möglichst hohe Punktzahl erreicht werden, indem
+Blockreihen auflöst werden, während die Tetrominos immer schneller fallen.
 
-Im _„B-Type“_-Modus müssen 25 Reihen beseitigt werden, um den Sieg
-zu erringen. Der Schwierigkeitsgrad kann erhöht, indem
-die Fallgeschwindigkeit heraufsetzt und mehr Zufalls-Tetriminos
-einstellt wird.[^nintendo.com]
+Im _„B-Type“_-Modus müssen 25 Reihen beseitigt werden, um zu siegen. Der
+Schwierigkeitsgrad kann erhöht werden, indem
+die Fallgeschwindigkeit heraufsetzt und dadurch mehr Tetrominos
+eingestellt werden.[^nintendo.com]
 
 <!-- ### Drehung
 
@@ -38,18 +37,23 @@ https://laroldsjubilantjunkyard.com/tutorial/tetris/ -->
 
 ### Farben
 
-4 Farben
+Der ursprüngliche Game Boy verwendet einen monochromen Bildschirm, der lediglich
+vier verschiedene Farbschattierungen anzeigen kann.
+Da der Hintergrund des nicht beleuchteten LCD-Displays grünlich ist, führt
+dies zu einer „grünstichigen“ Grafikanzeige.
 
-![](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/Colors.svg)
+![](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/Colors.svg)
 
-| deutsch | englisch | hex grün[^gimp-color-picker] | grau   | grau          |
-| ------- | -------- | ---------------------------- | ------ | ------------- |
-| weiß    | white    | 7f7c15                       | ffffff | (255,255,255) |
-| hell    | light    | 5b703e                       | adadad | (173,173,173) |
-| dunkel  | dark     | 5d5949                       | 525252 | (82,82,82)    |
-| schwarz | black    | 344d40                       | 000000 | (0,0,0)       |
+| deutsch | englisch | grün[^gimp-green]       | grün[^wikipedia-green]   | grau[^mgba-gray]          |
+| ------- | -------- | ----------------------- | ------------------------ | ------------------------- |
+| weiß    | white    | `#aaaa00` `(170,170,0)` | `#7b8210` `(123,130,16)` | `#ffffff` `(255,255,255)` |
+| hell    | light    | `#556633` `(85,102,52)` | `#5a7942` `(90,121,66)`  | `#adadad` `(173,173,173)` |
+| dunkel  | dark     | `#335544` `(51,85,68)`  | `#39594a` `(57,89,74)`   | `#525252` `(82,82,82)`    |
+| schwarz | black    | `#223322` `(34,51,34)`  | `#294139` `(41,65,57)`   | `#000000` `(0,0,0)`       |
 
-https://en.wikipedia.org/wiki/List_of_video_game_console_palettes#Game_Boy
+### Start-Positionen
+
+![Blueprint](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/Start-Positions.svg)
 
 ### Bildschirme (`scenes`)
 
@@ -223,5 +227,7 @@ zu können, muss man sie in das gewünschte Projekt importieren. In Java funktio
 <small>Quelle: Klett, Informatik 2, 2021, Seite 275</small>
 
 [^nintendo.com]: https://www.nintendo.com/de-de/Spiele/Game-Boy/TETRIS--275924.html
-[^gimp-color-picker]: Ermittelt mit dem GIMP Color Picker mittels eines Bildschirmfotos des Videos https://www.youtube.com/watch?v=BQwohHgrk2s
+[^gimp-green]: Ermittelt mit dem GIMP Color Picker mittels eines Bildschirmfotos des Videos https://www.youtube.com/watch?v=BQwohHgrk2s
 [^strategywiki.org]: https://strategywiki.org/wiki/Tetris/Rotation_systems
+[^mgba-gray]: mGBA Emulator Settings / Gameboy / Game Boy palette / Grayscale Preset
+[^wikipedia-green]: https://en.wikipedia.org/wiki/List_of_video_game_console_palettes#Game_Boy Original Game Boy Hex / Binary
