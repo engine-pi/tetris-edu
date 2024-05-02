@@ -226,6 +226,188 @@ zu können, muss man sie in das gewünschte Projekt importieren. In Java funktio
 
 <small>Quelle: Klett, Informatik 2, 2021, Seite 275</small>
 
+### `super`-Schlüsselwort
+
+Das Java-Schlüsselwort `super` hat drei explizite Verwendungsbereiche.
+
+1. Zugriff auf die Attribute der Elternklasse, wenn die Kindklasse ebenfalls Attribute mit demselben Namen hat.
+2. Aufruf des Konstruktoren der Elternklasse in der Kindklasse.
+3. Aufruf der Methoden der Elternklasse in der Kindklasse, wenn die Kindklasse Methoden überschrieben hat.
+
+<small>Quelle: [codegym.cc](https://codegym.cc/de/groups/posts/super-schlsselwort-in-java)</small>
+
+### Überladen von Methoden
+
+Überladen bedeutet, dass derselbe Methodenname mehrfach in einer Klasse verwendet werden kann.
+Damit das Überladen möglich ist, muss wenigstens eine der folgenden Vorraussetzungen erfüllt sein:
+
+1. Der Datentyp mindestens eines Übergabeparameters ist anders als in den übrigen
+   gleichnamen Methoden.
+2. Die Anzahl der Übergabeparameter ist unterschiedlich.
+
+<small>Quelle: [Java-Tutorial.org ](https://www.java-tutorial.org/ueberladen_von_methoden.html)</small>
+
+### Lambda-Ausdrücken
+
+Mit Lambda-Ausdrücken kann man sich viel Schreibarbeit sparen. Klassen, die eine
+sogenannten Funktionale Schnittstelle (Functional Interface) implementieren,
+d. h. ein Interface mit genau einer abstrakten Methoden, können auch als
+Lambda-Ausdruck formuliert werden.
+
+Klasse, die das Interface/Schnittstelle `Runnable` implementiert.
+
+```java
+class MyRunnable implements Runnable
+{
+    public void run()
+    {
+        startTitleScene();
+    }
+}
+
+delay(3, new MyRunnable());
+```
+
+Als anonyme Klasse
+
+```java
+delay(3, new Runnable()
+{
+    public void run()
+    {
+        startTitleScene();
+    }
+});
+```
+
+Als Lambda-Ausdruck (Name stammt vom [Lambda-Kalkül](https://de.wikipedia.org/wiki/Lambda-Kalk%C3%BCl) ab)
+
+```java
+delay(3, () -> startTitleScene());
+```
+
+## Fortschritt
+
+### Vorgegebene Klassen
+
+- `Tetris.java` (teilweise, noch zu ergänzen)
+- `Image.java`
+- `HelloWorldScene.java`
+
+Komplettes `color` package
+
+- `color/ColorSchema.java`
+- `color/CustomColorSchema.java`
+- `color/GrayColorSchema.java`
+- `color/GreenColorSchema.java`
+
+### 1. Sitzung
+
+`scenes.SimpleScene.java`
+
+```java
+package de.pirckheimer_gymnasium.tetris.scenes;
+
+import de.pirckheimer_gymnasium.tetris.Image;
+import rocks.friedrich.engine_omega.Game;
+import rocks.friedrich.engine_omega.Scene;
+
+public class SimpleScene extends Scene
+{
+    public SimpleScene()
+    {
+        Image image = new Image("fullscreen/title.png");
+        getCamera().setFocus(image);
+        add(image);
+    }
+
+    public static void main(String[] args)
+    {
+        Scene scene = new SimpleScene();
+        Game.start(20 * 8 * 4, 18 * 8 * 4, scene);
+    }
+}
+```
+
+`scenes.BaseScene.java`
+
+```java
+package de.pirckheimer_gymnasium.tetris.scenes;
+
+import de.pirckheimer_gymnasium.tetris.Image;
+import rocks.friedrich.engine_omega.Scene;
+
+public class BaseScene extends Scene
+{
+    Image background;
+
+    public BaseScene(String imageFilename)
+    {
+        background = new Image("fullscreen/" + imageFilename + ".png");
+        getCamera().setFocus(background);
+        add(background);
+    }
+}
+```
+
+`scenes.IngameScene.java`
+
+Java-Thema: `super()`: Aufruf des Konstruktors der Oberklasse
+
+```java
+package de.pirckheimer_gymnasium.tetris.scenes;
+
+import rocks.friedrich.engine_omega.Game;
+import rocks.friedrich.engine_omega.Scene;
+
+public class IngameScene extends BaseScene
+{
+    public IngameScene()
+    {
+        super("ingame");
+    }
+
+    public static void main(String[] args)
+    {
+        Scene scene = new IngameScene();
+        Game.start(20 * 8 * 4, 18 * 8 * 4, scene);
+    }
+}
+```
+
+`scenes.TitleScene.java`
+
+
+```java
+package de.pirckheimer_gymnasium.tetris.scenes;
+
+import rocks.friedrich.engine_omega.Game;
+import rocks.friedrich.engine_omega.Scene;
+
+public class TitleScene extends BaseScene
+{
+    public TitleScene()
+    {
+        super("title");
+    }
+
+    public static void main(String[] args)
+    {
+        Scene scene = new TitleScene();
+        Game.start(20 * 8 * 4, 18 * 8 * 4, scene);
+    }
+}
+```
+
+### 2. Sitzung
+
+- Implementierung der statischen `start()`-Methoden in der Tetrisklasse.
+- Löschen der Klassen `HelloWorldScene` und `SimpleScene`.
+- Erweiterung der `*Scene`s:
+  - Tastensteuerung: siehe -> https://engine-alpha.org/wiki/v4.x/User_Input
+  - Zeitsteuerung
+- Implementierung der Block-Klasse
+
 [^nintendo.com]: https://www.nintendo.com/de-de/Spiele/Game-Boy/TETRIS--275924.html
 [^gimp-green]: Ermittelt mit dem GIMP Color Picker mittels eines Bildschirmfotos des Videos https://www.youtube.com/watch?v=BQwohHgrk2s
 [^strategywiki.org]: https://strategywiki.org/wiki/Tetris/Rotation_systems
