@@ -1,7 +1,6 @@
 package de.pirckheimer_gymnasium.tetris.scenes;
 
-import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Scene;
+import de.pirckheimer_gymnasium.tetris.Tetris;
 
 public class IngameScene extends BaseScene
 {
@@ -12,7 +11,6 @@ public class IngameScene extends BaseScene
 
     public static void main(String[] args)
     {
-        Scene scene = new IngameScene();
-        Game.start(20 * 8 * 4, 18 * 8 * 4, scene);
+        Tetris.start(new IngameScene(), true);
     }
 }

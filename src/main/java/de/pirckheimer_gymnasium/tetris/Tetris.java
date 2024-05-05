@@ -1,11 +1,10 @@
 package de.pirckheimer_gymnasium.tetris;
 
-import java.awt.Color;
-
+import de.pirckheimer_gymnasium.tetris.scenes.TitleScene;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 
-import de.pirckheimer_gymnasium.tetris.scenes.HelloWorldScene;
+import java.awt.Color;
 
 public class Tetris
 {
@@ -36,7 +35,7 @@ public class Tetris
 
     /**
      * Schaltet den Entwicklermodus ein oder aus. Im Entwicklermodus werden zum
-     * Beispiel statt den normalen Blockbildern Zahlen angezeigt.
+     * Beispiel statt den normalen Blockbilder Zahlen angezeigt.
      */
     public static boolean DEBUG = false;
 
@@ -58,9 +57,33 @@ public class Tetris
 
     public static final Color COLOR_BLACK = null;
 
+    public static void start(Scene scene, boolean debug)
+    {
+        scene.getCamera().setZoom(BLOCK_SIZE * SCALE);
+        Game.setDebug(debug);
+        if (!Game.isRunning())
+        {
+            Game.start(WIDTH * BLOCK_SIZE * SCALE, HEIGHT * BLOCK_SIZE * SCALE,
+                    scene);
+        }
+        else
+        {
+            Game.transitionToScene(scene);
+        }
+    }
+
+    public static void start(Scene scene)
+    {
+        start(scene, false);
+    }
+
+    public static void start()
+    {
+        start(new TitleScene());
+    }
+
     public static void main(String[] args)
     {
-        Scene scene = new HelloWorldScene();
-        Game.start(20 * 8 * 4, 18 * 8 * 4, scene);
+        start();
     }
 }
