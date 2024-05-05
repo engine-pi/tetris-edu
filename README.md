@@ -21,7 +21,7 @@ Blockreihen auflöst werden, während die Tetrominos immer schneller fallen.
 Im _„B-Type“_-Modus müssen 25 Reihen beseitigt werden, um zu siegen. Der
 Schwierigkeitsgrad kann erhöht werden, indem
 die Fallgeschwindigkeit heraufsetzt und dadurch mehr Tetrominos
-eingestellt werden.[^nintendo.com]
+eingestellt werden.[^nintendo]
 
 <!-- ### Drehung
 
@@ -30,7 +30,7 @@ eingestellt werden.[^nintendo.com]
   J, L, and T pieces have four rotations centered around the middle square of the three square edge.
   While S and Z pieces have four rotations, they always favor the bottom and right sides of their rotation space (hence the "right handed" aspect of this rotation system.)
 
-[^strategywiki.org] https://strategywiki.org/wiki/Tetris/Rotation_systems
+[^strategywiki] https://strategywiki.org/wiki/Tetris/Rotation_systems
 https://laroldsjubilantjunkyard.com/tutorial/tetris/ -->
 
 ![Blueprint](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/Blueprint.svg)
@@ -53,7 +53,53 @@ dies zu einer „grünstichigen“ Grafikanzeige.
 
 ### Start-Positionen
 
+Die Tetrominos erscheinen auf der Koordinate `(4,16)` und als Vorschau auf der Koordinate `(14,3)`.
+
 ![Blueprint](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/Start-Positions.svg)
+
+### Geschwindigkeit
+
+Gameboy läuft mit einer Framerate von `59.73` Bildern pro Sekunde.
+
+![Die Tetris-ROM im Hex-Editor bei Byte `1B06h`](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/Level-Speed-Table_1B06.png)
+
+| Level              | 0     | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     | 10    | 11    | 12    | 13    | 14    | 15    | 16    | 17    | 18    | 19    | 20    |
+|--------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Frames per row     | 53    | 49    | 45    | 41    | 37    | 33    | 28    | 22    | 17    | 11    | 10    | 9     | 8     | 7     | 6     | 6     | 5     | 5     | 4     | 4     | 3     |
+| Frames per row - 1 | 52    | 48    | 44    | 40    | 36    | 32    | 27    | 21    | 16    | 10    | 9     | 8     | 7     | 6     | 5     | 5     | 4     | 4     | 3     | 3     | 2     |
+| Hexadezimal        | 0x34  | 0x30  | 0x2C  | 0x28  | 0x24  | 0x20  | 0x1B  | 0x15  | 0x10  | 0x0A  | 0x09  | 0x08  | 0x07  | 0x06  | 0x05  | 0x05  | 0x04  | 0x04  | 0x03  | 0x03  | 0x02  |
+| Hexadezimal        | 34h   | 30h   | 2Ch   | 28h   | 24h   | 20h   | 1Bh   | 15h   | 10h   | 0Ah   | 09h   | 08h   | 07h   | 06h   | 05h   | 05h   | 04h   | 04h   | 03h   | 03h   | 02h   |
+| Sekunden           | 0.887 | 0.820 | 0.753 | 0.686 | 0.619 | 0.552 | 0.469 | 0.368 | 0.285 | 0.184 | 0.167 | 0.151 | 0.134 | 0.117 | 0.100 | 0.100 | 0.084 | 0.084 | 0.067 | 0.067 | 0.050 |
+
+Diese Tabelle befindet sich bei Byte `1B06h` in der ROM; `XXXh` steht für eine
+hexadezimale Zahl `XXX`. Eine andere Schreibweise wäre `0xXXX`.
+Jeder Eintrag ist um eins
+kleiner als die tatsächliche Anzahl der Frames. So wird z. B. bei Level `1` `49`
+(= `31h`) Frames als `30h` gespeichert.[^harddrop]
+
+https://github.com/alexsteb/tetris_disassembly/blob/b4bbceb3cc086121ab4fe9bf4dad6752fe956ec0/main.asm#L4558-L4559
+
+https://github.com/osnr/tetris/blob/4ca2f8bf3013a13a4c54d59ee03c929036045f93/tetris.asm#L3845-L3846
+
+### Soft und Hard Drop
+
+Ein __Soft Drop__ ist eine Bewegung, bei dem ein Tetromino seine Abwärtsbewegung
+beschleunigt. Dieser Zug bringt mehr Punkte, als den Tetromino von selbst fallen
+zu lassen, aber weniger als ein Hard Drop.[^fandom]
+
+Bei einem __Hard Drop__ erreicht ein Tetromino sofort seine endgültige Position.
+
+### Sound
+
+[Game Boy Sound System](https://en.wikipedia.org/wiki/Game_Boy_Sound_System)
+
+GBS-Dateien: [ocremix.org](https://ocremix.org/chip/265) [zophar.net](https://www.zophar.net/music/gameboy-gbs/tetris)
+
+[gbsplay](https://github.com/mmitch/gbsplay)
+
+https://github.com/niuhuan/gbc-swing/blob/master/src/main/java/gbc/Speaker.java
+
+https://github.com/trekawek/coffee-gb
 
 ### Bildschirme (`scenes`)
 
@@ -401,15 +447,107 @@ public class TitleScene extends BaseScene
 
 ### 2. Sitzung
 
-- Implementierung der statischen `start()`-Methoden in der Tetrisklasse.
+- Löschen des `blocks`-Pakets.
+- Implementierung der statischen `start()`-Methoden in der `Tetris`-Klasse.
+
+```java
+    public static void start(Scene scene, boolean debug)
+    {
+        scene.getCamera().setZoom(BLOCK_SIZE * SCALE);
+        Game.setDebug(debug);
+        if (!Game.isRunning())
+        {
+            Game.start(WIDTH * BLOCK_SIZE * SCALE, HEIGHT * BLOCK_SIZE * SCALE,
+                    scene);
+        }
+        else
+        {
+            Game.transitionToScene(scene);
+        }
+    }
+
+    public static void start(Scene scene)
+    {
+        start(scene, false);
+    }
+
+    public static void start()
+    {
+        start(new TitleScene());
+    }
+
+    public static void main(String[] args)
+    {
+        start();
+    }
+```
+
 - Löschen der Klassen `HelloWorldScene` und `SimpleScene`.
 - Erweiterung der `*Scene`s:
   - Tastensteuerung: siehe -> https://engine-alpha.org/wiki/v4.x/User_Input
   - Zeitsteuerung
-- Implementierung der Block-Klasse
 
-[^nintendo.com]: https://www.nintendo.com/de-de/Spiele/Game-Boy/TETRIS--275924.html
+```java
+package de.pirckheimer_gymnasium.tetris.scenes;
+
+import de.pirckheimer_gymnasium.tetris.Tetris;
+import rocks.friedrich.engine_omega.event.KeyListener;
+
+import java.awt.event.KeyEvent;
+
+public class CopyrightScene extends BaseScene implements KeyListener
+{
+    public CopyrightScene()
+    {
+        super("copyright");
+        // Lambda-Ausdruck = anonyme Funktion () -> {}
+        delay(1, () -> startTitleScene());
+    }
+
+    public void startTitleScene()
+    {
+        Tetris.start(new TitleScene());
+    }
+
+    public void onKeyDown(KeyEvent e)
+    {
+        startTitleScene();
+    }
+
+    public static void main(String[] args)
+    {
+        Tetris.start(new CopyrightScene(), true);
+    }
+}
+```
+
+- Initialisierung der `Block`-Klasse
+
+```java
+package de.pirckheimer_gymnasium.tetris.tetrominos;
+
+import de.pirckheimer_gymnasium.tetris.Image;
+
+public class Block
+{
+    private Image image;
+
+    public Block(String name)
+    {
+        image = new Image("blocks/" + name + ".png");
+    }
+}
+```
+
+# 3. Sitzung
+
+- Fertigstellung der `Block`-Klasse
+- Anfangen der `Tetromino`-Klasse
+
+[^fandom] https://tetris.fandom.com/wiki/Soft_Drop
 [^gimp-green]: Ermittelt mit dem GIMP Color Picker mittels eines Bildschirmfotos des Videos https://www.youtube.com/watch?v=BQwohHgrk2s
-[^strategywiki.org]: https://strategywiki.org/wiki/Tetris/Rotation_systems
+[^harddrop]: https://harddrop.com/wiki/Tetris_(Game_Boy)
 [^mgba-gray]: mGBA Emulator Settings / Gameboy / Game Boy palette / Grayscale Preset
+[^nintendo]: https://www.nintendo.com/de-de/Spiele/Game-Boy/TETRIS--275924.html
+[^strategywiki]: https://strategywiki.org/wiki/Tetris/Rotation_systems
 [^wikipedia-green]: https://en.wikipedia.org/wiki/List_of_video_game_console_palettes#Game_Boy Original Game Boy Hex / Binary
