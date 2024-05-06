@@ -539,12 +539,15 @@ public class Block
 }
 ```
 
-# 3. Sitzung
+### 3. Sitzung
 
 - Fertigstellung der `Block`-Klasse
-- Anfangen der `Tetromino`-Klasse
 
-[^fandom] https://tetris.fandom.com/wiki/Soft_Drop
+![UML-Klassendiagramm der Klasse Block](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/UML/Class-Block.drawio.svg)
+
+- Initialisierung der `Tetromino`-Klasse
+
+[^fandom]: https://tetris.fandom.com/wiki/Soft_Drop
 [^gimp-green]: Ermittelt mit dem GIMP Color Picker mittels eines Bildschirmfotos des Videos https://www.youtube.com/watch?v=BQwohHgrk2s
 [^harddrop]: https://harddrop.com/wiki/Tetris_(Game_Boy)
 [^mgba-gray]: mGBA Emulator Settings / Gameboy / Game Boy palette / Grayscale Preset
