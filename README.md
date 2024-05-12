@@ -651,6 +651,271 @@ public class I extends Tetromino
 
 - Update der Engine Omega auf 0.4.0
 
+
+```diff
+--- a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/I.java
++++ b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/I.java
+@@ -6,6 +6,32 @@ public class I extends Tetromino
+ {
+     public I(Scene scene, int x, int y)
+     {
+-        super(scene, x, y);
++        super(scene, "I", x, y);
++        addBlock(0, x, y);
++        addBlock(1, x - 1, y);
++        addBlock(2, x + 1, y);
++        addBlock(3, x + 2, y);
++    }
++
++    protected void doRotation()
++    {
++        switch (rotation)
++        {
++        case 0:
++        case 2:
++            moveBlock(0, 0, 0);
++            moveBlock(1, -1, 1);
++            moveBlock(2, 1, -1);
++            moveBlock(3, 2, -2);
++            break;
++
++        case 1:
++        case 3:
++            moveBlock(0, 0, 0);
++            moveBlock(1, 1, -1);
++            moveBlock(2, -1, 1);
++            moveBlock(3, -2, 2);
++            break;
++        }
+     }
+ }
+diff --git a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/J.java b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/J.java
+index 95b93d9..97188e5 100644
+--- a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/J.java
++++ b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/J.java
+@@ -6,6 +6,14 @@ public class J extends Tetromino
+ {
+     public J(Scene scene, int x, int y)
+     {
+-        super(scene, x, y);
++        super(scene, "J", x, y);
++        addBlock(0, x, y);
++        addBlock(1, x - 1, y);
++        addBlock(2, x + 1, y);
++        addBlock(3, x + 1, y - 1);
++    }
++
++    protected void doRotation()
++    {
+     }
+ }
+diff --git a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/L.java b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/L.java
+index a864ec3..d7b4b74 100644
+--- a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/L.java
++++ b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/L.java
+@@ -6,6 +6,14 @@ public class L extends Tetromino
+ {
+     public L(Scene scene, int x, int y)
+     {
+-        super(scene, x, y);
++        super(scene, "L", x, y);
++        addBlock(0, x, y);
++        addBlock(1, x - 1, y);
++        addBlock(2, x + 1, y);
++        addBlock(3, x - 1, y - 1);
++    }
++
++    protected void doRotation()
++    {
+     }
+ }
+diff --git a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/O.java b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/O.java
+index 38309f9..7fc6039 100644
+--- a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/O.java
++++ b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/O.java
+@@ -6,6 +6,14 @@ public class O extends Tetromino
+ {
+     public O(Scene scene, int x, int y)
+     {
+-        super(scene, x, y);
++        super(scene, "O", x, y);
++        addBlock(0, x, y);
++        addBlock(1, x + 1, y);
++        addBlock(2, x, y - 1);
++        addBlock(3, x + 1, y - 1);
++    }
++
++    protected void doRotation()
++    {
+     }
+ }
+diff --git a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/S.java b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/S.java
+index b49e4e8..1f3e9c9 100644
+--- a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/S.java
++++ b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/S.java
+@@ -6,6 +6,14 @@ public class S extends Tetromino
+ {
+     public S(Scene scene, int x, int y)
+     {
+-        super(scene, x, y);
++        super(scene, "S", x, y);
++        addBlock(0, x, y);
++        addBlock(1, x + 1, y);
++        addBlock(2, x - 1, y - 1);
++        addBlock(3, x, y - 1);
++    }
++
++    protected void doRotation()
++    {
+     }
+ }
+diff --git a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/T.java b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/T.java
+index d76e780..0097931 100644
+--- a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/T.java
++++ b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/T.java
+@@ -6,6 +6,14 @@ public class T extends Tetromino
+ {
+     public T(Scene scene, int x, int y)
+     {
+-        super(scene, x, y);
++        super(scene, "T", x, y);
++        addBlock(0, x, y);
++        addBlock(1, x - 1, y);
++        addBlock(2, x + 1, y);
++        addBlock(3, x, y - 1);
++    }
++
++    protected void doRotation()
++    {
+     }
+ }
+diff --git a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Tetromino.java b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Tetromino.java
+index 1de2c6b..9f0a94c 100644
+--- a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Tetromino.java
++++ b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Tetromino.java
+@@ -2,18 +2,93 @@ package de.pirckheimer_gymnasium.tetris.tetrominos;
+
+ import rocks.friedrich.engine_omega.Scene;
+
+-public class Tetromino
++public abstract class Tetromino
+ {
+     private Scene scene;
+
++    private String name;
++
+     private int x;
+
+     private int y;
+
+-    public Tetromino(Scene scene, int x, int y)
++    private Block[] blocks;
++
++    public int rotation;
++
++    public Tetromino(Scene scene, String name, int x, int y)
+     {
+         this.scene = scene;
++        this.name = name;
+         this.x = x;
+         this.y = y;
++        blocks = new Block[4];
++    }
++
++    protected void addBlock(int index, int x, int y)
++    {
++        blocks[index] = new Block(scene, name, x, y);
++    }
++
++    protected void moveBlock(int index, int dX, int dY)
++    {
++        blocks[index].moveBy(dX, dY);
++    }
++
++    public void moveLeft()
++    {
++    }
++
++    public void moveRight()
++    {
++    }
++
++    public void moveDown()
++    {
++    }
++
++    protected abstract void doRotation();
++
++    public void rotate()
++    {
++        if (rotation > 2)
++        {
++            rotation = 0;
++        }
++        else
++        {
++            rotation++;
++        }
++        doRotation();
++    }
++
++    public static Tetromino create(Scene scene, String name, int x, int y)
++    {
++        switch (name)
++        {
++        case "L":
++            return new L(scene, x, y);
++
++        case "J":
++            return new J(scene, x, y);
++
++        case "I":
++            return new I(scene, x, y);
++
++        case "O":
++            return new O(scene, x, y);
++
++        case "Z":
++            return new Z(scene, x, y);
++
++        case "S":
++            return new S(scene, x, y);
++
++        case "T":
++            return new T(scene, x, y);
++
++        default:
++            return new L(scene, x, y);
++        }
+     }
+ }
+diff --git a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Z.java b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Z.java
+index bfa53ba..1e3f517 100644
+--- a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Z.java
++++ b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Z.java
+@@ -6,6 +6,14 @@ public class Z extends Tetromino
+ {
+     public Z(Scene scene, int x, int y)
+     {
+-        super(scene, x, y);
++        super(scene, "Z", x, y);
++        addBlock(0, x, y);
++        addBlock(1, x - 1, y);
++        addBlock(2, x, y - 1);
++        addBlock(3, x + 1, y - 1);
++    }
++
++    protected void doRotation()
++    {
+     }
+ }
+```
+
+### 5. Sitzung
+
+- Implementierung aller Rotationen
+- Implementierung der Methoden `moveLeft()`, `moveRight()` und `moveDown()`
+
 [^fandom]: https://tetris.fandom.com/wiki/Soft_Drop
 [^gimp-green]: Ermittelt mit dem GIMP Color Picker mittels eines Bildschirmfotos des Videos https://www.youtube.com/watch?v=BQwohHgrk2s
 [^harddrop]: https://harddrop.com/wiki/Tetris_(Game_Boy)
