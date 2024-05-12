@@ -541,11 +541,115 @@ public class Block
 
 ### 3. Sitzung
 
+- Löschen des Klassenattributes `Tetris.DEBUG`
 - Fertigstellung der `Block`-Klasse
 
 ![UML-Klassendiagramm der Klasse Block](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/UML/Class-Block.drawio.svg)
 
+```java
+package de.pirckheimer_gymnasium.tetris.tetrominos;
+
+import de.pirckheimer_gymnasium.tetris.Image;
+import rocks.friedrich.engine_omega.Scene;
+
+public class Block
+{
+    private Scene scene;
+
+    private Image image;
+
+    private int x;
+
+    private int y;
+
+    public Block(Scene scene, String imageName, int x, int y)
+    {
+        this.scene = scene;
+        image = new Image("blocks/" + imageName + ".png");
+        image.setPosition(x, y);
+        this.scene.add(image);
+        this.x = x;
+        this.y = y;
+    }
+
+    public int getX()
+    {
+        return x;
+    }
+
+    public int getY()
+    {
+        return y;
+    }
+
+    public void moveBy(int dX, int dY)
+    {
+        image.moveBy(dX, dY);
+        x = x + dX;
+        y = y + dY;
+    }
+
+    public void moveLeft()
+    {
+        moveBy(-1, 0);
+    }
+
+    public void moveRight()
+    {
+        moveBy(1, 0);
+    }
+
+    public void moveDown()
+    {
+        moveBy(0, -1);
+    }
+
+    public void remove()
+    {
+        scene.remove(image);
+    }
+}
+```
+
 - Initialisierung der `Tetromino`-Klasse
+
+```java
+package de.pirckheimer_gymnasium.tetris.tetrominos;
+
+import rocks.friedrich.engine_omega.Scene;
+
+public class Tetromino
+{
+    private Scene scene;
+
+    private int x;
+
+    private int y;
+
+    public Tetromino(Scene scene, int x, int y)
+    {
+        this.scene = scene;
+        this.x = x;
+        this.y = y;
+    }
+}
+```
+
+Initialisierung aller Tetromino-Unterkassen, z. B. Klasse `I`
+
+```java
+public class I extends Tetromino
+{
+    public I(Scene scene, int x, int y)
+    {
+        super(scene, x, y);
+    }
+}
+```
+
+### 4. Sitzung
+
+- Update der Engine Omega auf 0.4.0
 
 [^fandom]: https://tetris.fandom.com/wiki/Soft_Drop
 [^gimp-green]: Ermittelt mit dem GIMP Color Picker mittels eines Bildschirmfotos des Videos https://www.youtube.com/watch?v=BQwohHgrk2s
