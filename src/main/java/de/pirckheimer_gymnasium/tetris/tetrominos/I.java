@@ -17,6 +17,8 @@ public class I extends Tetromino
     {
         switch (rotation)
         {
+        // 3 -> 0
+        // 1 -> 2
         case 0:
         case 2:
             moveBlock(0, 0, 0);
@@ -25,6 +27,8 @@ public class I extends Tetromino
             moveBlock(3, 2, -2);
             break;
 
+        // 0 -> 1
+        // 2 -> 3
         case 1:
         case 3:
             moveBlock(0, 0, 0);

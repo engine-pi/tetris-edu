@@ -15,5 +15,6 @@ public class O extends Tetromino
 
     protected void doRotation()
     {
+        // keine Rotation notwendig bei O
     }
 }

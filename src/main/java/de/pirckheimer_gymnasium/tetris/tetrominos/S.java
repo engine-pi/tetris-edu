@@ -15,5 +15,23 @@ public class S extends Tetromino
 
     protected void doRotation()
     {
+        switch (rotation)
+        {
+        // 0 -> 1
+        // 2 -> 3
+        case 1:
+        case 3:
+            moveBlock(1, -2, 0);
+            moveBlock(2, 0, 2);
+            break;
+
+        // 3 -> 0
+        // 1 -> 2
+        case 0:
+        case 2:
+            moveBlock(1, 2, 0);
+            moveBlock(2, 0, -2);
+            break;
+        }
     }
 }

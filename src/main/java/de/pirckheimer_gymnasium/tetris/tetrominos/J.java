@@ -17,26 +17,32 @@ public class J extends Tetromino
     {
         switch (rotation)
         {
-        case 0:
-            moveBlock(0, 0, 0);
-            break;
-
+        // 0 -> 1
         case 1:
-            moveBlock(0, 0, 0);
+            moveBlock(1, 1, 1);
+            moveBlock(2, -1, -1);
+            moveBlock(3, -2, 0);
             break;
 
+        // 1 -> 2
         case 2:
-            moveBlock(0, 0, 0);
-            moveBlock(1, -1, 1);
-            moveBlock(2, 1, -1);
-            moveBlock(3, 2, -2);
-            break;
-
-        case 3:
-            moveBlock(0, 0, 0);
             moveBlock(1, 1, -1);
             moveBlock(2, -1, 1);
-            moveBlock(3, -2, 2);
+            moveBlock(3, 0, 2);
+            break;
+
+        // 2 -> 3
+        case 3:
+            moveBlock(1, -1, -1);
+            moveBlock(2, 1, 1);
+            moveBlock(3, 2, 0);
+            break;
+
+        // 3 -> 0
+        case 0:
+            moveBlock(1, -1, 1);
+            moveBlock(2, 1, -1);
+            moveBlock(3, 0, -2);
             break;
         }
     }
