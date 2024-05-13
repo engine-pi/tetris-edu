@@ -935,6 +935,210 @@ index bfa53ba..1e3f517 100644
 ### 5. Sitzung
 
 - Implementierung aller Rotationen
+
+Tetromino `L`:
+
+```java
+    protected void doRotation()
+    {
+        switch (rotation)
+        {
+        // 0 -> 1
+        case 1:
+            moveBlock(1, 1, 1);
+            moveBlock(2, -1, -1);
+            moveBlock(3, 0, 2);
+            break;
+
+        // 1 -> 2
+        case 2:
+            moveBlock(1, 1, -1);
+            moveBlock(2, -1, 1);
+            moveBlock(3, 2, 0);
+            break;
+
+        // 2 -> 3
+        case 3:
+            moveBlock(1, -1, -1);
+            moveBlock(2, 1, 1);
+            moveBlock(3, 0, -2);
+            break;
+
+        // 3 -> 0
+        case 0:
+            moveBlock(1, -1, 1);
+            moveBlock(2, 1, -1);
+            moveBlock(3, -2, 0);
+            break;
+        }
+    }
+```
+
+Tetromino `J`:
+
+```java
+    protected void doRotation()
+    {
+        switch (rotation)
+        {
+        // 0 -> 1
+        case 1:
+            moveBlock(1, 1, 1);
+            moveBlock(2, -1, -1);
+            moveBlock(3, -2, 0);
+            break;
+
+        // 1 -> 2
+        case 2:
+            moveBlock(1, 1, -1);
+            moveBlock(2, -1, 1);
+            moveBlock(3, 0, 2);
+            break;
+
+        // 2 -> 3
+        case 3:
+            moveBlock(1, -1, -1);
+            moveBlock(2, 1, 1);
+            moveBlock(3, 2, 0);
+            break;
+
+        // 3 -> 0
+        case 0:
+            moveBlock(1, -1, 1);
+            moveBlock(2, 1, -1);
+            moveBlock(3, 0, -2);
+            break;
+        }
+    }
+
+```
+
+Tetromino `I`:
+
+```java
+    protected void doRotation()
+    {
+        switch (rotation)
+        {
+        // 3 -> 0
+        // 1 -> 2
+        case 0:
+        case 2:
+            moveBlock(0, 0, 0);
+            moveBlock(1, -1, 1);
+            moveBlock(2, 1, -1);
+            moveBlock(3, 2, -2);
+            break;
+
+        // 0 -> 1
+        // 2 -> 3
+        case 1:
+        case 3:
+            moveBlock(0, 0, 0);
+            moveBlock(1, 1, -1);
+            moveBlock(2, -1, 1);
+            moveBlock(3, -2, 2);
+            break;
+        }
+    }
+
+```
+
+Tetromino `O`:
+
+```java
+    protected void doRotation()
+    {
+        // keine Rotation notwendig bei O
+    }
+```
+
+Tetromino `Z`:
+
+```java
+    protected void doRotation()
+    {
+        switch (rotation)
+        {
+        // 0 -> 1
+        // 2 -> 3
+        case 1:
+        case 3:
+            moveBlock(2, 0, 2);
+            moveBlock(3, -2, 0);
+            break;
+
+        // 3 -> 0
+        // 1 -> 2
+        case 0:
+        case 2:
+            moveBlock(2, 0, -2);
+            moveBlock(3, 2, 0);
+            break;
+        }
+    }
+```
+
+Tetromino `S`:
+
+```java
+    protected void doRotation()
+    {
+        switch (rotation)
+        {
+        // 0 -> 1
+        // 2 -> 3
+        case 1:
+        case 3:
+            moveBlock(1, -2, 0);
+            moveBlock(2, 0, 2);
+            break;
+
+        // 3 -> 0
+        // 1 -> 2
+        case 0:
+        case 2:
+            moveBlock(1, 2, 0);
+            moveBlock(2, 0, -2);
+            break;
+        }
+    }
+```
+
+Tetromino `T`:
+
+```java
+    protected void doRotation()
+    {
+        switch (rotation)
+        {
+        // 0 -> 1
+        case 1:
+            moveBlock(2, -1, 1);
+            break;
+
+        // 1 -> 2
+        case 2:
+            moveBlock(3, 1, 1);
+            break;
+
+        // 2 -> 3
+        case 3:
+            moveBlock(1, 1, -1);
+            break;
+
+        // 3 -> 0
+        case 0:
+            moveBlock(1, -1, 1);
+            moveBlock(2, 1, -1);
+            moveBlock(3, -1, -1);
+            break;
+        }
+    }
+```
+
+### 6. Sitzung
+
 - Implementierung der Methoden `moveLeft()`, `moveRight()` und `moveDown()`
 
 [^fandom]: https://tetris.fandom.com/wiki/Soft_Drop
