@@ -332,6 +332,27 @@ Als Lambda-Ausdruck (Name stammt vom [Lambda-Kalkül](https://de.wikipedia.org/w
 delay(3, () -> startTitleScene());
 ```
 
+### Entwurfsmuster [Schablonenmethode](https://de.wikipedia.org/wiki/Schablonenmethode)
+
+Beim Schablonenmethoden-Entwurfsmuster wird in einer abstrakten Klasse das Skelett eines Algorithmus definiert. Die konkrete Ausformung der einzelnen Schritte wird an Unterklassen delegiert. Dadurch besteht die Möglichkeit, einzelne Schritte des Algorithmus zu verändern oder zu überschreiben, ohne dass die zu Grunde liegende Struktur des Algorithmus modifiziert werden muss. Die Schablonenmethode (engl. template method) ruft abstrakte Methoden auf, die erst in den Unterklassen definiert werden. Diese Methoden werden auch als Einschubmethoden bezeichnet.
+
+Quelle: [Wikipedia](https://de.wikipedia.org/wiki/Schablonenmethode)
+
+### foreach-Schleife
+
+for-each ist eine Art for-Schleife, die du verwendest, wenn du alle Elemente eines Arrays oder einer Collection verarbeiten musst. Allerdings wird der Ausdruck for-each in dieser Schleife eigentlich nicht verwendet. Die Syntax lautet wie folgt:
+
+```java
+for (type itVar : array)
+{
+    // Operations
+}
+```
+
+Wobei type der Typ der Iterator-Variable ist (der dem Datentyp der Elemente im Array entspricht!), itVar ihr Name und array ein Array (andere Datenstrukturen sind auch erlaubt, z. B. eine Collection, wie ArrayList), d. h. das Objekt, auf dem die Schleife ausgeführt wird. Wie du siehst, wird bei diesem Konstrukt kein Zähler verwendet: Die Iterator-Variable iteriert einfach über die Elemente des Arrays oder der Collection. Wenn eine solche Schleife ausgeführt wird, wird der Iterator-Variable nacheinander der Wert jedes Elements des Arrays oder der Collection zugewiesen, woraufhin der angegebene Anweisungsblock (oder die Anweisung) ausgeführt wird.
+
+Quelle: [codegym.cc](https://codegym.cc/de/groups/posts/1011-die-for-each-schleife-in-java)
+
 ## Fortschritt
 
 ### Vorgegebene Klassen
