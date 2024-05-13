@@ -1,5 +1,6 @@
 package de.pirckheimer_gymnasium.tetris.tetrominos;
 
+import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
 
 public abstract class Tetromino
@@ -27,7 +28,16 @@ public abstract class Tetromino
 
     protected void addBlock(int index, int x, int y)
     {
-        blocks[index] = new Block(scene, name, x, y);
+        Block block;
+        if (Game.isDebug())
+        {
+            block = new Block(this.scene, "Debug-" + index, x, y);
+        }
+        else
+        {
+            block = new Block(this.scene, name, x, y);
+        }
+        blocks[index] = block;
     }
 
     protected void moveBlock(int index, int dX, int dY)
