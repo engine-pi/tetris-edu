@@ -47,14 +47,23 @@ public abstract class Tetromino
 
     public void moveLeft()
     {
+        for(Block block : blocks) {
+            block.moveLeft();
+        }
     }
 
     public void moveRight()
     {
+        for (Block block : blocks) {
+            block.moveRight();
+        }
     }
 
     public void moveDown()
     {
+        for (Block block : blocks) {
+            block.moveDown();
+        }
     }
 
     protected abstract void doRotation();
