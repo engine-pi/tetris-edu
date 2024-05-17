@@ -25,8 +25,5 @@ public class Grid {
     }
 
     public boolean isTaken(int x, int y) {
-        return x < 0 || x >= getWidth() || y >= getHeight() || y < 0 || grid[x][x] != null;
     }
-
-
 }
