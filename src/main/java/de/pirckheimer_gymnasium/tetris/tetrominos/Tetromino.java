@@ -50,25 +50,25 @@ public abstract class Tetromino
 
     public void moveLeft()
     {
-        for (int i = 0; i < blocks.length; i++)
+        for (Block blocks : blocks)
         {
-            blocks[i].moveLeft();
+            blocks.moveLeft();
         }
     }
 
     public void moveRight()
     {
-        for (int i = 0; i < blocks.length; i++)
+        for (Block block : blocks)
         {
-            blocks[i].moveRight();
+            block.moveRight();
         }
     }
 
     public void moveDown()
     {
-        for (int i = 0; i < blocks.length; i++)
+        for (Block block : blocks)
         {
-            blocks[i].moveDown();
+            block.moveDown();
         }
     }
 
