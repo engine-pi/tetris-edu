@@ -24,9 +24,7 @@ public class TetrominoDebugScene extends Scene implements KeyListener
         rotation = new Text("0", 2);
         rotation.setColor(Color.WHITE);
         rotation.setPosition(2, Tetris.HEIGHT / 2);
-
         grid = new Grid(Tetris.WIDTH, Tetris.HEIGHT);
-
         getCamera().setPostion(Tetris.WIDTH / 2, Tetris.HEIGHT / 2);
         add(rotation);
         t = new Tetromino[7];
@@ -52,6 +50,7 @@ public class TetrominoDebugScene extends Scene implements KeyListener
     {
         return Tetromino.create(this, grid, name, x, y);
     }
+
     @Override
     public void onKeyDown(KeyEvent keyEvent)
     {
