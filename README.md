@@ -23,15 +23,24 @@ Schwierigkeitsgrad kann erhöht werden, indem
 die Fallgeschwindigkeit heraufsetzt und dadurch mehr Tetrominos
 eingestellt werden.[^nintendo]
 
-<!-- ### Drehung
+### Drehung
 
-- O-Tetrominos verändern ihr Aussehen nicht, wenn sie sich drehen.
-- I-Tetrominos have two rotations, favoring the lower half when horizontal, and the right half when vertical.
-  J, L, and T pieces have four rotations centered around the middle square of the three square edge.
-  While S and Z pieces have four rotations, they always favor the bottom and right sides of their rotation space (hence the "right handed" aspect of this rotation system.)
+Die Tetrominos drehen sich nur in eine Richtung, nämlich nach rechts.
+Je nach Tetromino müssten unterschiedlich viele Zustände abgebildet werden.
 
-[^strategywiki] https://strategywiki.org/wiki/Tetris/Rotation_systems
-https://laroldsjubilantjunkyard.com/tutorial/tetris/ -->
+- ein Zustand: `O`
+- zwei Zustände: `I`, `Z` und `S`
+- vier Zustände: `L`, `J` und `T`
+
+Den begrenzten grafischen Möglichkeiten des originalen Gameboys geschuldet,
+drehen sich die Tetrominos nicht geometrisch korrekt, sondern simulieren die
+Rotation nur. Bei dieser Rotationssimulation sind je nach Tetromino mehrere
+Möglichkeiten realisierbar.
+In verschiedenen Internetforen wird vom `right handed` bzw.
+`left handed` Rotationssystem gesprochen. Die Gameboy-Variante verwendet
+das `left handed` System. Das `I`, `Z` und `S` sind bei der Drehung auf
+linken Seite des Rotationsquadrats angesiedelt.
+[^strategywiki]
 
 ![Blueprint](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/Blueprint.svg)
 
@@ -64,7 +73,7 @@ Gameboy läuft mit einer Framerate von `59.73` Bildern pro Sekunde.
 ![Die Tetris-ROM im Hex-Editor bei Byte `1B06h`](https://raw.githubusercontent.com/Josef-Friedrich/tetris/main/misc/graphics/Level-Speed-Table_1B06.png)
 
 | Level              | 0     | 1     | 2     | 3     | 4     | 5     | 6     | 7     | 8     | 9     | 10    | 11    | 12    | 13    | 14    | 15    | 16    | 17    | 18    | 19    | 20    |
-|--------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| ------------------ | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
 | Frames per row     | 53    | 49    | 45    | 41    | 37    | 33    | 28    | 22    | 17    | 11    | 10    | 9     | 8     | 7     | 6     | 6     | 5     | 5     | 4     | 4     | 3     |
 | Frames per row - 1 | 52    | 48    | 44    | 40    | 36    | 32    | 27    | 21    | 16    | 10    | 9     | 8     | 7     | 6     | 5     | 5     | 4     | 4     | 3     | 3     | 2     |
 | Hexadezimal        | 0x34  | 0x30  | 0x2C  | 0x28  | 0x24  | 0x20  | 0x1B  | 0x15  | 0x10  | 0x0A  | 0x09  | 0x08  | 0x07  | 0x06  | 0x05  | 0x05  | 0x04  | 0x04  | 0x03  | 0x03  | 0x02  |
@@ -83,11 +92,11 @@ https://github.com/osnr/tetris/blob/4ca2f8bf3013a13a4c54d59ee03c929036045f93/tet
 
 ### Soft und Hard Drop
 
-Ein __Soft Drop__ ist eine Bewegung, bei dem ein Tetromino seine Abwärtsbewegung
+Ein **Soft Drop** ist eine Bewegung, bei dem ein Tetromino seine Abwärtsbewegung
 beschleunigt. Dieser Zug bringt mehr Punkte, als den Tetromino von selbst fallen
 zu lassen, aber weniger als ein Hard Drop.[^fandom]
 
-Bei einem __Hard Drop__ erreicht ein Tetromino sofort seine endgültige Position.
+Bei einem **Hard Drop** erreicht ein Tetromino sofort seine endgültige Position.
 
 ### Sound
 
@@ -444,7 +453,6 @@ public class IngameScene extends BaseScene
 
 `scenes.TitleScene.java`
 
-
 ```java
 package de.pirckheimer_gymnasium.tetris.scenes;
 
@@ -671,7 +679,6 @@ public class I extends Tetromino
 ### 4. Sitzung
 
 - Update der Engine Omega auf 0.4.0
-
 
 ```diff
 --- a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/I.java
