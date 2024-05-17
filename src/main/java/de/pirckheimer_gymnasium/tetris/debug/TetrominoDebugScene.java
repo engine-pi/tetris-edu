@@ -92,6 +92,6 @@ public class TetrominoDebugScene extends Scene implements KeyListener
 
     public static void main(String[] args)
     {
-        start(true);
+        start(false);
     }
 }
