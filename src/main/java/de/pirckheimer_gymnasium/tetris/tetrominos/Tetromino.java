@@ -7,6 +7,8 @@ public abstract class Tetromino
 {
     private Scene scene;
 
+    private Grid grid;
+
     private String name;
 
     private int x;
@@ -17,9 +19,10 @@ public abstract class Tetromino
 
     public int rotation;
 
-    public Tetromino(Scene scene, String name, int x, int y)
+    public Tetromino(Scene scene, Grid grid, String name, int x, int y)
     {
         this.scene = scene;
+        this.grid = grid;
         this.name = name;
         this.x = x;
         this.y = y;
@@ -81,33 +84,33 @@ public abstract class Tetromino
         doRotation();
     }
 
-    public static Tetromino create(Scene scene, String name, int x, int y)
+    public static Tetromino create(Scene scene, Grid grid, String name, int x, int y)
     {
         switch (name)
         {
         case "L":
-            return new L(scene, x, y);
+            return new L(scene, grid, x, y);
 
         case "J":
-            return new J(scene, x, y);
+            return new J(scene, grid, x, y);
 
         case "I":
-            return new I(scene, x, y);
+            return new I(scene, grid, x, y);
 
         case "O":
-            return new O(scene, x, y);
+            return new O(scene, grid, x, y);
 
         case "Z":
-            return new Z(scene, x, y);
+            return new Z(scene, grid, x, y);
 
         case "S":
-            return new S(scene, x, y);
+            return new S(scene, grid, x, y);
 
         case "T":
-            return new T(scene, x, y);
+            return new T(scene, grid, x, y);
 
         default:
-            return new L(scene, x, y);
+            return new L(scene, grid, x, y);
         }
     }
 }

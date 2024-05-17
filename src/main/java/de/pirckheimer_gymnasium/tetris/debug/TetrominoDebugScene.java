@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.tetris.Tetris;
+import de.pirckheimer_gymnasium.tetris.tetrominos.Grid;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Tetromino;
 import rocks.friedrich.engine_omega.Game;
 import rocks.friedrich.engine_omega.Scene;
@@ -16,11 +17,16 @@ public class TetrominoDebugScene extends Scene implements KeyListener
 
     Tetromino[] t;
 
+    Grid grid;
+
     public TetrominoDebugScene()
     {
         rotation = new Text("0", 2);
         rotation.setColor(Color.WHITE);
         rotation.setPosition(2, Tetris.HEIGHT / 2);
+
+        grid = new Grid(Tetris.WIDTH, Tetris.HEIGHT);
+
         getCamera().setPostion(Tetris.WIDTH / 2, Tetris.HEIGHT / 2);
         add(rotation);
         t = new Tetromino[7];
@@ -44,9 +50,8 @@ public class TetrominoDebugScene extends Scene implements KeyListener
 
     private Tetromino createTetromino(String name, int x, int y)
     {
-        return Tetromino.create(this, name, x, y);
+        return Tetromino.create(this, grid, name, x, y);
     }
-
     @Override
     public void onKeyDown(KeyEvent keyEvent)
     {
