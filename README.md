@@ -98,6 +98,26 @@ zu lassen, aber weniger als ein Hard Drop.[^fandom]
 
 Bei einem **Hard Drop** erreicht ein Tetromino sofort seine endgültige Position.
 
+### Punkteverteilung / Scoring
+
+| Level  | Punkte für 1 Reihe | Punkte für 2 Reihen | Punkte für 3 Reihen | Punkte für 4 Reihen  |
+|--------|-------------------|--------------------|--------------------|---------------------|
+| 0      | 40                | 100                | 300                | 1200                |
+| 1      | 80                | 200                | 600                | 2400                |
+| 2      | 120               | 300                | 900                | 3600                |
+| ...    |                   |                    |                    |                     |
+| 9      | 400               | 1000               | 3000               | 12000               |
+| n      | 40 * (n + 1)      | 100 * (n + 1)      | 300 * (n + 1)      | 1200 * (n + 1)      |
+
+Neben der Bepunktung für abgebaute vollständige Reihen, gibt es Punkte für durch
+Soft Drop platzierte Tetrominos. Die Anzahl der Punkte entspricht dabei der
+Länge in Feldern der kontinuierlichen, d. h. nicht unterbrochenen
+Soft-Drop-Bewegung.
+
+https://harddrop.com/wiki/Scoring
+
+https://gamefaqs.gamespot.com/gameboy/585960-tetris/faqs/8483
+
 ### Sound
 
 [Game Boy Sound System](https://en.wikipedia.org/wiki/Game_Boy_Sound_System)
@@ -1147,6 +1167,76 @@ Tetromino `T`:
 ### 6. Sitzung
 
 - Implementierung der Methoden `moveLeft()`, `moveRight()` und `moveDown()`
+
+Tetromino.java
+
+```java
+    public void moveLeft()
+    {
+        for (Block blocks : blocks)
+        {
+            blocks.moveLeft();
+        }
+    }
+
+    public void moveRight()
+    {
+        for (Block block : blocks)
+        {
+            block.moveRight();
+        }
+    }
+
+    public void moveDown()
+    {
+        for (Block block : blocks)
+        {
+            block.moveDown();
+        }
+    }
+```
+
+- Implementierung der Klasse Grid
+
+```java
+public class Grid
+{
+    private Block[][] grid;
+
+    public Grid(int width, int height)
+    {
+        grid = new Block[width][height];
+    }
+
+    public int getWidth()
+    {
+        return grid.length;
+    }
+
+    public int getHeight()
+    {
+        return grid[0].length;
+    }
+
+    public void addBlock(Block block)
+    {
+        grid[block.getX()][block.getY()] = block;
+    }
+
+    public void removeBlock(Block block)
+    {
+        grid[block.getX()][block.getY()] = null;
+    }
+
+    public boolean isTaken(int x, int y)
+    {
+        return x < 0 || x >= getWidth() || y >= getHeight() || y < 0
+                || grid[x][y] != null;
+    }
+}
+```
+
+### 7. Sitzung
 
 [^fandom]: https://tetris.fandom.com/wiki/Soft_Drop
 [^gimp-green]: Ermittelt mit dem GIMP Color Picker mittels eines Bildschirmfotos des Videos https://www.youtube.com/watch?v=BQwohHgrk2s
