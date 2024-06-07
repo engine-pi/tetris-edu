@@ -99,12 +99,19 @@ public abstract class Tetromino
         return true;
     }
 
-    public void moveLeft()
+    public boolean moveLeft()
     {
+        if (!checkLeft()) {
+            return false;
+        }
+        removeBlocksFromGrid();
         for (Block block : blocks)
         {
             block.moveLeft();
         }
+        addBlocksToGrid();
+        x--;
+        return true;
     }
 
     protected boolean checkRight() {
@@ -117,12 +124,19 @@ public abstract class Tetromino
         return true;
     }
 
-    public void moveRight()
+    public boolean moveRight()
     {
+        if (!checkRight()) {
+            return false;
+        }
+        removeBlocksFromGrid();
         for (Block block : blocks)
         {
             block.moveRight();
         }
+        x++;
+        addBlocksToGrid();
+        return true;
     }
 
     protected boolean checkDown() {
@@ -135,12 +149,19 @@ public abstract class Tetromino
         return true;
     }
 
-    public void moveDown()
+    public boolean moveDown()
     {
+        if (!checkDown()) {
+            return false;
+        }
+        removeBlocksFromGrid();
         for (Block block : blocks)
         {
             block.moveDown();
         }
+        y--;
+        addBlocksToGrid();
+        return true;
     }
 
     protected abstract void doRotation();
