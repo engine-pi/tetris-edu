@@ -48,11 +48,59 @@ public abstract class Tetromino
         blocks[index].moveBy(dX, dY);
     }
 
+
+    protected boolean isOwnBlockPosition(int x, int y) {
+        for (Block block : blocks)
+        {
+
+            if (block.getY() == y && block.getX() == x) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    protected boolean isGridTaken(int x, int y) {
+        if (grid == null) {
+            return false;
+        }
+
+        return !isOwnBlockPosition(x, y) && grid.isTaken(x, y);
+    }
+
+   protected void addBlocksToGrid() {
+       if (grid == null) {
+           return;
+       }
+        for (Block block : blocks)
+       {
+           grid.addBlock(block);
+       }
+    }
+
+    protected void removeBlocksFromGrid() {
+        if (grid == null) {
+            return;
+        }
+        for (Block block : blocks)
+        {
+            grid.removeBlock(block);
+        }
+    }
+
+
+
+
+
+
+
+
     public void moveLeft()
     {
-        for (Block blocks : blocks)
+        for (Block block : blocks)
         {
-            blocks.moveLeft();
+            block.moveLeft();
         }
     }
 
