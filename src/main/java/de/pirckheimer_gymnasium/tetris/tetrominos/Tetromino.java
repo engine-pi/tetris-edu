@@ -89,12 +89,15 @@ public abstract class Tetromino
         }
     }
 
-
-
-
-
-
-
+    protected boolean checkLeft() {
+        for (Block block : blocks)
+        {
+            if (isGridTaken(block.getX() - 1, block.getY())) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public void moveLeft()
     {
@@ -104,12 +107,32 @@ public abstract class Tetromino
         }
     }
 
+    protected boolean checkRight() {
+        for (Block block : blocks)
+        {
+            if (isGridTaken(block.getX() + 1, block.getY())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void moveRight()
     {
         for (Block block : blocks)
         {
             block.moveRight();
         }
+    }
+
+    protected boolean checkDown() {
+        for (Block block : blocks)
+        {
+            if (isGridTaken(block.getX(), block.getY() - 1)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void moveDown()
