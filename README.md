@@ -242,7 +242,7 @@ und [Niklas Keller](https://github.com/kelunik) entwickelt.
 Wir setzen jedoch einen Fork der Engine Alpha ein,
 genannt [Engine Omega](https://github.com/Josef-Friedrich/engine-omega).
 Im Gegensatz zur originalen Engine ist die
-[Engine Omega](https://central.sonatype.com/artifact/rocks.friedrich.engine_omega/engine-omega)
+[Engine Omega](https://central.sonatype.com/artifact/de.pirckheimer_gymnasium.engine_pi/engine-omega)
 über das wichtigste Repository für Java-Projekte das sogenannte
 [Maven Central Repository](https://central.sonatype.com) abrufbar.
 
@@ -253,7 +253,7 @@ Abhängigkeit (`dependency`) hinterlegt.
 <project>
   <dependencies>
     <dependency>
-      <groupId>rocks.friedrich.engine_omega</groupId>
+      <groupId>de.pirckheimer_gymnasium.engine_pi</groupId>
       <artifactId>engine-omega</artifactId>
       <version>0.2.0</version>
     </dependency>
@@ -405,8 +405,8 @@ Komplettes `color` package
 package de.pirckheimer_gymnasium.tetris.scenes;
 
 import de.pirckheimer_gymnasium.tetris.Image;
-import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 public class SimpleScene extends Scene
 {
@@ -431,7 +431,7 @@ public class SimpleScene extends Scene
 package de.pirckheimer_gymnasium.tetris.scenes;
 
 import de.pirckheimer_gymnasium.tetris.Image;
-import rocks.friedrich.engine_omega.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 public class BaseScene extends Scene
 {
@@ -453,8 +453,8 @@ Java-Thema: `super()`: Aufruf des Konstruktors der Oberklasse
 ```java
 package de.pirckheimer_gymnasium.tetris.scenes;
 
-import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 public class IngameScene extends BaseScene
 {
@@ -476,8 +476,8 @@ public class IngameScene extends BaseScene
 ```java
 package de.pirckheimer_gymnasium.tetris.scenes;
 
-import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 public class TitleScene extends BaseScene
 {
@@ -540,7 +540,7 @@ public class TitleScene extends BaseScene
 package de.pirckheimer_gymnasium.tetris.scenes;
 
 import de.pirckheimer_gymnasium.tetris.Tetris;
-import rocks.friedrich.engine_omega.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyListener;
 
 import java.awt.event.KeyEvent;
 
@@ -599,7 +599,7 @@ public class Block
 package de.pirckheimer_gymnasium.tetris.tetrominos;
 
 import de.pirckheimer_gymnasium.tetris.Image;
-import rocks.friedrich.engine_omega.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 public class Block
 {
@@ -665,7 +665,7 @@ public class Block
 ```java
 package de.pirckheimer_gymnasium.tetris.tetrominos;
 
-import rocks.friedrich.engine_omega.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 public class Tetromino
 {
@@ -843,7 +843,7 @@ index 1de2c6b..9f0a94c 100644
 +++ b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Tetromino.java
 @@ -2,18 +2,93 @@ package de.pirckheimer_gymnasium.tetris.tetrominos;
 
- import rocks.friedrich.engine_omega.Scene;
+ import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 -public class Tetromino
 +public abstract class Tetromino
