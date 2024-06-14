@@ -10,6 +10,7 @@ public class BaseScene extends Scene
     public BaseScene(String imageFilename)
     {
         background = new Image("fullscreen/" + imageFilename + ".png");
+        background.setPosition(-2, 0);
         getCamera().setFocus(background);
         add(background);
     }

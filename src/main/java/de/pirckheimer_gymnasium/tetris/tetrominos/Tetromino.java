@@ -158,7 +158,7 @@ public abstract class Tetromino {
 
     public void remove() {
         for (Block block : blocks) {
-            block.moveRight();
+            block.remove();
         }
         removeBlocksFromGrid();
     }
