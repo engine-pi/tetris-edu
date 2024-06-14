@@ -10,7 +10,7 @@ public class IngameScene extends BaseScene
 {
     private Grid grid;
 
-    private static Random random = new Random();
+    private static final Random random = new Random();
 
     private int nextTetromino;
 
@@ -29,8 +29,15 @@ public class IngameScene extends BaseScene
         {
             nextTetromino = random.nextInt(7);
         }
-        tetromino = Tetromino.create(this, grid, "L", 4, 16);
+        tetromino = Tetromino.create(this, grid, nextTetromino, 4, 16);
         nextTetromino = random.nextInt(7);
+
+        if (previewTetromino != null) {
+            previewTetromino.remove();
+        }
+
+        previewTetromino = Tetromino.create(this, null, nextTetromino, 14, 3);
+
     }
 
     public static void main(String[] args)

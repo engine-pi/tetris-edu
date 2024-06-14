@@ -156,6 +156,13 @@ public abstract class Tetromino {
         doRotation();
     }
 
+    public void remove() {
+        for (Block block : blocks) {
+            block.moveRight();
+        }
+        removeBlocksFromGrid();
+    }
+
     public static Tetromino create(Scene scene, Grid grid, String name, int x,
                                    int y) {
         switch (name) {
