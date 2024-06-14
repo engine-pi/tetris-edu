@@ -18,7 +18,7 @@ import de.pirckheimer_gymnasium.tetris.color.GrayColorSchema;
  *
  * Bereitet Bilder für die Verwendung in Tetris vor.
  */
-public class Image extends rocks.friedrich.engine_omega.actor.Image
+public class Image extends de.pirckheimer_gymnasium.engine_pi.actor.Image
 {
     public Image(String pathname)
     {

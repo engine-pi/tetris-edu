@@ -16,9 +16,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>rocks.friedrich.engine_omega</groupId>
-      <artifactId>engine-omega</artifactId>
-      <version>0.11.0</version>
+      <groupId>de.pirckheimer-gymnasium</groupId>
+      <artifactId>engine-pi</artifactId>
+      <version>0.16.0</version>
     </dependency>
 
     <dependency>

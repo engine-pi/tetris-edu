@@ -6,12 +6,12 @@ import java.awt.event.KeyEvent;
 import de.pirckheimer_gymnasium.tetris.Tetris;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Grid;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Tetromino;
-import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Scene;
-import rocks.friedrich.engine_omega.actor.Text;
-import rocks.friedrich.engine_omega.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
+import de.pirckheimer_gymnasium.engine_pi.actor.Text;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class TetrominoDebugScene extends Scene implements KeyListener
+public class TetrominoDebugScene extends Scene implements KeyStrokeListener
 {
     private Text rotation;
 

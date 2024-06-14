@@ -3,9 +3,9 @@ package de.pirckheimer_gymnasium.tetris.scenes;
 import java.awt.event.KeyEvent;
 
 import de.pirckheimer_gymnasium.tetris.Tetris;
-import rocks.friedrich.engine_omega.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
-public class TitleScene extends BaseScene implements KeyListener
+public class TitleScene extends BaseScene implements KeyStrokeListener
 {
     public TitleScene()
     {

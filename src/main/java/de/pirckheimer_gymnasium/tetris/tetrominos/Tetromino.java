@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.tetris.tetrominos;
 
-import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 public abstract class Tetromino
 {

@@ -1,8 +1,8 @@
 package de.pirckheimer_gymnasium.tetris;
 
 import de.pirckheimer_gymnasium.tetris.scenes.TitleScene;
-import rocks.friedrich.engine_omega.Game;
-import rocks.friedrich.engine_omega.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Game;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 import java.awt.Color;
 
@@ -48,7 +48,7 @@ public class Tetris
 
     public static void start(Scene scene, boolean debug)
     {
-        scene.getCamera().setZoom(BLOCK_SIZE * SCALE);
+        scene.getCamera().setMeter(BLOCK_SIZE * SCALE);
         Game.setDebug(debug);
         if (!Game.isRunning())
         {

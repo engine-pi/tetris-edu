@@ -1,7 +1,7 @@
 package de.pirckheimer_gymnasium.tetris.scenes;
 
 import de.pirckheimer_gymnasium.tetris.Image;
-import rocks.friedrich.engine_omega.Scene;
+import de.pirckheimer_gymnasium.engine_pi.Scene;
 
 public class BaseScene extends Scene
 {

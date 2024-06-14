@@ -1,11 +1,11 @@
 package de.pirckheimer_gymnasium.tetris.scenes;
 
 import de.pirckheimer_gymnasium.tetris.Tetris;
-import rocks.friedrich.engine_omega.event.KeyListener;
+import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
 
 import java.awt.event.KeyEvent;
 
-public class CopyrightScene extends BaseScene implements KeyListener
+public class CopyrightScene extends BaseScene implements KeyStrokeListener
 {
     public CopyrightScene()
     {
