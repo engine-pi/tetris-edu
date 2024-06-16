@@ -3,10 +3,10 @@ package de.pirckheimer_gymnasium.tetris.tetrominos;
 import de.pirckheimer_gymnasium.engine_pi.Game;
 import de.pirckheimer_gymnasium.engine_pi.Scene;
 
-public abstract class Tetromino {
-
+public abstract class Tetromino
+{
     // names[0]
-    private static String[] names = {"L", "J", "I", "O", "Z", "S", "T"};
+    private static String[] names = { "L", "J", "I", "O", "Z", "S", "T" };
 
     private Scene scene;
 
@@ -22,7 +22,8 @@ public abstract class Tetromino {
 
     public int rotation;
 
-    public Tetromino(Scene scene, Grid grid, String name, int x, int y) {
+    public Tetromino(Scene scene, Grid grid, String name, int x, int y)
+    {
         this.scene = scene;
         this.grid = grid;
         this.name = name;
@@ -31,69 +32,91 @@ public abstract class Tetromino {
         blocks = new Block[4];
     }
 
-    protected void addBlock(int index, int x, int y) {
+    protected void addBlock(int index, int x, int y)
+    {
         Block block;
-        if (Game.isDebug()) {
+        if (Game.isDebug())
+        {
             block = new Block(this.scene, "Debug-" + index, x, y);
-        } else {
+        }
+        else
+        {
             block = new Block(this.scene, name, x, y);
         }
         blocks[index] = block;
     }
 
-    protected void moveBlock(int index, int dX, int dY) {
+    protected void moveBlock(int index, int dX, int dY)
+    {
         blocks[index].moveBy(dX, dY);
     }
 
-    protected boolean isOwnBlockPosition(int x, int y) {
-        for (Block block : blocks) {
-            if (block.getY() == y && block.getX() == x) {
+    protected boolean isOwnBlockPosition(int x, int y)
+    {
+        for (Block block : blocks)
+        {
+            if (block.getY() == y && block.getX() == x)
+            {
                 return true;
             }
         }
         return false;
     }
 
-    protected boolean isGridTaken(int x, int y) {
-        if (grid == null) {
+    protected boolean isGridTaken(int x, int y)
+    {
+        if (grid == null)
+        {
             return false;
         }
         return !isOwnBlockPosition(x, y) && grid.isTaken(x, y);
     }
 
-    protected void addBlocksToGrid() {
-        if (grid == null) {
+    protected void addBlocksToGrid()
+    {
+        if (grid == null)
+        {
             return;
         }
-        for (Block block : blocks) {
+        for (Block block : blocks)
+        {
             grid.addBlock(block);
         }
     }
 
-    protected void removeBlocksFromGrid() {
-        if (grid == null) {
+    protected void removeBlocksFromGrid()
+    {
+        if (grid == null)
+        {
             return;
         }
-        for (Block block : blocks) {
+        for (Block block : blocks)
+        {
             grid.removeBlock(block);
         }
     }
 
-    protected boolean checkLeft() {
-        for (Block block : blocks) {
-            if (isGridTaken(block.getX() - 1, block.getY())) {
+    protected boolean checkLeft()
+    {
+        for (Block block : blocks)
+        {
+            if (isGridTaken(block.getX() - 1, block.getY()))
+            {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean moveLeft() {
-        if (!checkLeft()) {
+    public boolean moveLeft()
+    {
+        if (!checkLeft())
+        {
             return false;
         }
         removeBlocksFromGrid();
-        for (Block block : blocks) {
+        for (Block block : blocks)
+        {
             block.moveLeft();
         }
         addBlocksToGrid();
@@ -101,21 +124,27 @@ public abstract class Tetromino {
         return true;
     }
 
-    protected boolean checkRight() {
-        for (Block block : blocks) {
-            if (isGridTaken(block.getX() + 1, block.getY())) {
+    protected boolean checkRight()
+    {
+        for (Block block : blocks)
+        {
+            if (isGridTaken(block.getX() + 1, block.getY()))
+            {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean moveRight() {
-        if (!checkRight()) {
+    public boolean moveRight()
+    {
+        if (!checkRight())
+        {
             return false;
         }
         removeBlocksFromGrid();
-        for (Block block : blocks) {
+        for (Block block : blocks)
+        {
             block.moveRight();
         }
         x++;
@@ -123,21 +152,27 @@ public abstract class Tetromino {
         return true;
     }
 
-    protected boolean checkDown() {
-        for (Block block : blocks) {
-            if (isGridTaken(block.getX(), block.getY() - 1)) {
+    protected boolean checkDown()
+    {
+        for (Block block : blocks)
+        {
+            if (isGridTaken(block.getX(), block.getY() - 1))
+            {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean moveDown() {
-        if (!checkDown()) {
+    public boolean moveDown()
+    {
+        if (!checkDown())
+        {
             return false;
         }
         removeBlocksFromGrid();
-        for (Block block : blocks) {
+        for (Block block : blocks)
+        {
             block.moveDown();
         }
         y--;
@@ -147,54 +182,62 @@ public abstract class Tetromino {
 
     protected abstract void doRotation();
 
-    public void rotate() {
-        if (rotation > 2) {
+    public void rotate()
+    {
+        if (rotation > 2)
+        {
             rotation = 0;
-        } else {
+        }
+        else
+        {
             rotation++;
         }
         doRotation();
     }
 
-    public void remove() {
-        for (Block block : blocks) {
+    public void remove()
+    {
+        for (Block block : blocks)
+        {
             block.remove();
         }
         removeBlocksFromGrid();
     }
 
     public static Tetromino create(Scene scene, Grid grid, String name, int x,
-                                   int y) {
-        switch (name) {
-            case "L":
-                return new L(scene, grid, x, y);
+            int y)
+    {
+        switch (name)
+        {
+        case "L":
+            return new L(scene, grid, x, y);
 
-            case "J":
-                return new J(scene, grid, x, y);
+        case "J":
+            return new J(scene, grid, x, y);
 
-            case "I":
-                return new I(scene, grid, x, y);
+        case "I":
+            return new I(scene, grid, x, y);
 
-            case "O":
-                return new O(scene, grid, x, y);
+        case "O":
+            return new O(scene, grid, x, y);
 
-            case "Z":
-                return new Z(scene, grid, x, y);
+        case "Z":
+            return new Z(scene, grid, x, y);
 
-            case "S":
-                return new S(scene, grid, x, y);
+        case "S":
+            return new S(scene, grid, x, y);
 
-            case "T":
-                return new T(scene, grid, x, y);
+        case "T":
+            return new T(scene, grid, x, y);
 
-            default:
-                return new L(scene, grid, x, y);
+        default:
+            return new L(scene, grid, x, y);
         }
     }
 
     public static Tetromino create(Scene scene, Grid grid, int number, int x,
-                                   int y) {
+            int y)
+    {
         return create(scene, grid, names[number], x, y);
     }
-
 }

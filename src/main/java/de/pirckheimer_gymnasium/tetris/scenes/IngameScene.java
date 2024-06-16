@@ -8,7 +8,8 @@ import de.pirckheimer_gymnasium.tetris.tetrominos.Tetromino;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
-public class IngameScene extends BaseScene implements KeyStrokeListener {
+public class IngameScene extends BaseScene implements KeyStrokeListener
+{
     private Grid grid;
 
     private static final Random random = new Random();
@@ -19,7 +20,8 @@ public class IngameScene extends BaseScene implements KeyStrokeListener {
 
     private Tetromino previewTetromino;
 
-    public IngameScene() {
+    public IngameScene()
+    {
         super("ingame");
         grid = new Grid(Tetris.GRID_WIDTH, Tetris.HEIGHT + 1);
         createNextTetromino();
@@ -28,41 +30,49 @@ public class IngameScene extends BaseScene implements KeyStrokeListener {
         });
     }
 
-    private void moveDown() {
-        if (!tetromino.moveDown()) {
+    private void moveDown()
+    {
+        if (!tetromino.moveDown())
+        {
             createNextTetromino();
         }
     }
 
-    private void createNextTetromino() {
-        if (previewTetromino == null) {
+    private void createNextTetromino()
+    {
+        if (previewTetromino == null)
+        {
             nextTetromino = random.nextInt(7);
         }
         tetromino = Tetromino.create(this, grid, nextTetromino, 4, 16);
         nextTetromino = random.nextInt(7);
-        if (previewTetromino != null) {
+        if (previewTetromino != null)
+        {
             previewTetromino.remove();
         }
         previewTetromino = Tetromino.create(this, null, nextTetromino, 14, 3);
     }
 
-    public void onKeyDown(KeyEvent event) {
-        switch (event.getKeyCode()) {
-            case KeyEvent.VK_SPACE:
-                tetromino.rotate();
-                break;
+    public void onKeyDown(KeyEvent event)
+    {
+        switch (event.getKeyCode())
+        {
+        case KeyEvent.VK_SPACE:
+            tetromino.rotate();
+            break;
 
-            case KeyEvent.VK_LEFT:
-                tetromino.moveLeft();
-                break;
+        case KeyEvent.VK_LEFT:
+            tetromino.moveLeft();
+            break;
 
-            case KeyEvent.VK_RIGHT:
-                tetromino.moveRight();
-                break;
+        case KeyEvent.VK_RIGHT:
+            tetromino.moveRight();
+            break;
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Tetris.start(new IngameScene(), false);
     }
 }
