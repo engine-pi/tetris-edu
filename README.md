@@ -1238,6 +1238,76 @@ public class Grid
 
 ### 7. Sitzung
 
+?
+
+### 8. Sitzung
+
+```diff
+diff --git a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Tetromino.java b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Tetromino.java
+index 4750fa5..ec6cdad 100644
+--- a/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Tetromino.java
++++ b/src/main/java/de/pirckheimer_gymnasium/tetris/tetrominos/Tetromino.java
+@@ -32,6 +32,16 @@ public abstract class Tetromino
+         blocks = new Block[4];
+     }
+
++    public int getX()
++    {
++        return x;
++    }
++
++    public int getY()
++    {
++        return y;
++    }
++
+     protected void addBlock(int index, int x, int y)
+     {
+         Block block;
+@@ -180,10 +190,29 @@ public abstract class Tetromino
+         return true;
+     }
+
++    private boolean checkRotation()
++    {
++        for (int x = getX() - 1; x <= getX() + 1; x++)
++        {
++            for (int y = getY() - 1; y <= getY() + 1; y++)
++            {
++                if (isGridTaken(x, y))
++                {
++                    return false;
++                }
++            }
++        }
++        return true;
++    }
++
+     protected abstract void doRotation();
+
+-    public void rotate()
++    public boolean rotate()
+     {
++        if (!checkRotation())
++        {
++            return false;
++        }
+         if (rotation > 2)
+         {
+             rotation = 0;
+@@ -192,7 +221,10 @@ public abstract class Tetromino
+         {
+             rotation++;
+         }
++        removeBlocksFromGrid();
+         doRotation();
++        addBlocksToGrid();
++        return true;
+     }
+
+     public void remove()
+```
+
 [^fandom]: https://tetris.fandom.com/wiki/Soft_Drop
 [^gimp-green]: Ermittelt mit dem GIMP Color Picker mittels eines Bildschirmfotos des Videos https://www.youtube.com/watch?v=BQwohHgrk2s
 [^harddrop]: https://harddrop.com/wiki/Tetris_(Game_Boy)
