@@ -37,13 +37,10 @@ public abstract class Tetromino
         return x;
     }
 
-
     public int getY()
     {
         return y;
     }
-
-
 
     protected void addBlock(int index, int x, int y)
     {
@@ -207,6 +204,7 @@ public abstract class Tetromino
         }
         return true;
     }
+
     protected abstract void doRotation();
 
     public boolean rotate()
