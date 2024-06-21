@@ -104,10 +104,10 @@ public class Grid
     }
 
     /**
-     * Löst einen Erdrutsch (landslide) aus, das heißt alle Block oberhalb des
-     * getilgten Bereichs rutschen nach unten.
+     * Löst einen Erdrutsch (landslide) aus, das heißt alle Blöcke oberhalb des
+     * getilgten Bereichs werden nach unten bewegt.
      *
-     * @param range getilgte Bereich an vollen Zeilen
+     * @param range Der getilgte Bereich mit vollen Zeilen.
      */
     public void triggerLandslide(FilledRowRange range)
     {
