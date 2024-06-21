@@ -4,6 +4,8 @@ package de.pirckheimer_gymnasium.tetris.tetrominos;
  * Diese Klasse speichert, welche Zeilen vollständig sind und daher getilgt
  * werden können.
  */
+
+
 public class FilledRowRange
 {
     /**
