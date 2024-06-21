@@ -35,42 +35,51 @@ public class Grid
                 || grid[x][y] != null;
     }
 
-    private boolean isRowFull(int y) {
-        for (int x = 0; x < getWidth(); x++) {
-            if (grid[x][y] == null) {
+    private boolean isRowFull(int y)
+    {
+        for (int x = 0; x < getWidth(); x++)
+        {
+            if (grid[x][y] == null)
+            {
                 return false;
             }
         }
         return true;
     }
 
-
-
-    public FilledRowRange getFilledRowRang() {
+    public FilledRowRange getFilledRowRang()
+    {
         int from = -1;
         int to = -1;
-        for (int y = 0; y < getHeight(); y++) {
-            if (isRowFull(y)) {
-                if (from == -1) {
+        for (int y = 0; y < getHeight(); y++)
+        {
+            if (isRowFull(y))
+            {
+                if (from == -1)
+                {
                     from = y;
                 }
                 to = y;
             }
         }
-        if (from > -1 && to > -1) {
+        if (from > -1 && to > -1)
+        {
             return new FilledRowRange(from, to);
         }
-        else {
+        else
+        {
             return null;
         }
     }
 
-
-    private void clearRow(int y) {
-        for (int x = 0; x < getWidth(); x++) {
-            if (isTaken(x, y)) {
-               grid[x][y].remove();
-               grid[x][y] = null;
+    private void clearRow(int y)
+    {
+        for (int x = 0; x < getWidth(); x++)
+        {
+            if (isTaken(x, y))
+            {
+                grid[x][y].remove();
+                grid[x][y] = null;
             }
         }
     }
@@ -78,34 +87,42 @@ public class Grid
     /**
      * Leer das ganze Gitter
      */
-    public void clear() {
-        for (int y = 0; y < getHeight(); y++) {
+    public void clear()
+    {
+        for (int y = 0; y < getHeight(); y++)
+        {
             clearRow(y);
         }
     }
 
-    public void removeFilledRowRange(FilledRowRange range) {
-        for (int y = range.getFrom(); y <=range.getTo(); y++ ) {
+    public void removeFilledRowRange(FilledRowRange range)
+    {
+        for (int y = range.getFrom(); y <= range.getTo(); y++)
+        {
             clearRow(y);
         }
     }
 
     /**
-     * Löst einen Erdrutsch (landslide) aus, das heißt alle Block oberhalb des getilgten Bereichs rutschen
-     * nach unten.
+     * Löst einen Erdrutsch (landslide) aus, das heißt alle Block oberhalb des
+     * getilgten Bereichs rutschen nach unten.
      *
      * @param range getilgte Bereich an vollen Zeilen
      */
-    public void triggerLandslide(FilledRowRange range) {
-        for (int y =  range.getTo() ; y < getHeight(); y++ ) {
-           for (int x = 0; x < getWidth(); x++) {
-               if (isTaken(y, x)) {
-                   Block block = grid[x][y];
-                   block.moveBy(0, - range.getRowCount());
-                   grid[x][y] = null;
-                   grid[x][y - range.getRowCount()] = block;
-               }
-           }
+    public void triggerLandslide(FilledRowRange range)
+    {
+        for (int y = range.getTo(); y < getHeight(); y++)
+        {
+            for (int x = 0; x < getWidth(); x++)
+            {
+                if (isTaken(y, x))
+                {
+                    Block block = grid[x][y];
+                    block.moveBy(0, -range.getRowCount());
+                    grid[x][y] = null;
+                    grid[x][y - range.getRowCount()] = block;
+                }
+            }
         }
     }
 }

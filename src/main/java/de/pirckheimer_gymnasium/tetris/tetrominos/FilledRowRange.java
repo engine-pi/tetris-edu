@@ -4,23 +4,25 @@ package de.pirckheimer_gymnasium.tetris.tetrominos;
  * Diese Klasse speichert, welche Zeilen vollständig sind und daher getilgt
  * werden können.
  */
-
-
 public class FilledRowRange
 {
     /**
-     * Ab welcher y-Koordinate (einschließlich) der Bereich mit ausgefüllten Zeilen reicht.
+     * Ab welcher y-Koordinate (einschließlich) der Bereich mit ausgefüllten
+     * Zeilen reicht.
      */
     private final int from;
 
     /**
-     * Bis zu welcher y-Koordinate (einschließlich) der Bereich mit ausgefüllten Zeilen reicht.
+     * Bis zu welcher y-Koordinate (einschließlich) der Bereich mit ausgefüllten
+     * Zeilen reicht.
      */
     private final int to;
 
     /**
-     * @param from Ab welcher y-Koordinate (einschließlich) der Bereich mit ausgefüllten Zeilen reicht.
-     * @param to Bis zu welcher y-Koordinate (einschließlich) der Bereich mit ausgefüllten Zeilen reicht.
+     * @param from Ab welcher y-Koordinate (einschließlich) der Bereich mit
+     *             ausgefüllten Zeilen reicht.
+     * @param to   Bis zu welcher y-Koordinate (einschließlich) der Bereich mit
+     *             ausgefüllten Zeilen reicht.
      */
     public FilledRowRange(int from, int to)
     {
