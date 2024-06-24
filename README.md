@@ -100,23 +100,22 @@ Bei einem **Hard Drop** erreicht ein Tetromino sofort seine endgültige Position
 
 ### Punkteverteilung / Scoring
 
-| Level  | Punkte für 1 Reihe | Punkte für 2 Reihen | Punkte für 3 Reihen | Punkte für 4 Reihen  |
-|--------|-------------------|--------------------|--------------------|---------------------|
-| 0      | 40                | 100                | 300                | 1200                |
-| 1      | 80                | 200                | 600                | 2400                |
-| 2      | 120               | 300                | 900                | 3600                |
-| ...    |                   |                    |                    |                     |
-| 9      | 400               | 1000               | 3000               | 12000               |
-| n      | 40 * (n + 1)      | 100 * (n + 1)      | 300 * (n + 1)      | 1200 * (n + 1)      |
+| Level | Punkte für 1 Zeile | für 2 Zeilen   | für 3 Zeilen   | für 4 Zeilen    |
+| ----- | ------------------ | -------------- | -------------- | --------------- |
+| 0     | 40                 | 100            | 300            | 1200            |
+| 1     | 80                 | 200            | 600            | 2400            |
+| 2     | 120                | 300            | 900            | 3600            |
+| ...   |                    |                |                |                 |
+| 9     | 400                | 1000           | 3000           | 12000           |
+| n     | 40 \* (n + 1)      | 100 \* (n + 1) | 300 \* (n + 1) | 1200 \* (n + 1) |
 
-Neben der Bepunktung für abgebaute vollständige Reihen, gibt es Punkte für durch
-Soft Drop platzierte Tetrominos. Die Anzahl der Punkte entspricht dabei der
-Länge in Feldern der kontinuierlichen, d. h. nicht unterbrochenen
-Soft-Drop-Bewegung.
+Neben der Bepunktung für abgebaute vollständige Zeilen, gibt es Punkte für durch
+Soft-Drop platzierte Tetrominos. Die Punkteanzahl entspricht dabei der
+Zeilenanzahl der kontinuierlichen, d. h. nicht unterbrochenen
+Soft-Drop-Bewegung.[^harddrop_scoring] [^gamespot]
 
-https://harddrop.com/wiki/Scoring
-
-https://gamefaqs.gamespot.com/gameboy/585960-tetris/faqs/8483
+[^harddrop_scoring]: https://harddrop.com/wiki/Scoring
+[^gamespot]: https://gamefaqs.gamespot.com/gameboy/585960-tetris/faqs/8483
 
 ### Sound
 
