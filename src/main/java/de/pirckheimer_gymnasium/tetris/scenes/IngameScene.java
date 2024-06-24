@@ -1,6 +1,7 @@
 package de.pirckheimer_gymnasium.tetris.scenes;
 
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater;
 import de.pirckheimer_gymnasium.tetris.Tetris;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Grid;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Tetromino;
@@ -27,6 +28,8 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     private int level = 0;
 
+    private PressedKeyRepeater keyRepeater;
+
     public IngameScene()
     {
         super("ingame");
@@ -34,6 +37,14 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         createNextTetromino();
         repeat(calculateDownInterval(), () -> {
             moveDown();
+        });
+        keyRepeater = new PressedKeyRepeater(0.08, 0.15);
+        keyRepeater.addListener(KeyEvent.VK_LEFT, () -> {
+            tetromino.moveLeft();
+        });
+        keyRepeater = new PressedKeyRepeater(0.08, 0.15);
+        keyRepeater.addListener(KeyEvent.VK_RIGHT, () -> {
+            tetromino.moveRight();
         });
     }
 
@@ -74,14 +85,6 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         {
         case KeyEvent.VK_SPACE:
             tetromino.rotate();
-            break;
-
-        case KeyEvent.VK_LEFT:
-            tetromino.moveLeft();
-            break;
-
-        case KeyEvent.VK_RIGHT:
-            tetromino.moveRight();
             break;
         }
     }
