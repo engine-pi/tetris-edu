@@ -31,7 +31,7 @@ public class Grid
 
     public boolean isTaken(int x, int y)
     {
-        return x < 0 || x >= getWidth() || y >= getHeight() || y < 0
+        return x < 0 || x >= getWidth() || y < 0 || y >= getHeight()
                 || grid[x][y] != null;
     }
 
@@ -123,7 +123,7 @@ public class Grid
         {
             for (int x = 0; x < getWidth(); x++)
             {
-                if (isTaken(y, x))
+                if (isTaken(x, y))
                 {
                     Block block = grid[x][y];
                     block.moveBy(0, -range.getRowCount());
