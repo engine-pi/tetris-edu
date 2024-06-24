@@ -248,30 +248,30 @@ public class GridDebugScene extends BaseScene
     {
         switch (keyEvent.getKeyCode())
         {
-            case KeyEvent.VK_ENTER ->
-            {
-                range = GRID.getFilledRowRange();
-                GRID.removeFilledRowRange(range);
-                GRID.triggerLandslide(range);
-                range = null;
-            }
-            case KeyEvent.VK_F1 -> fillGrid1();
-            case KeyEvent.VK_F2 -> fillGrid2();
-            case KeyEvent.VK_F3 -> fillGrid3();
-            case KeyEvent.VK_F4 -> fillGrid4();
-            case KeyEvent.VK_1 ->
-            {
-                range = GRID.getFilledRowRange();
-            }
-            case KeyEvent.VK_2 ->
-            {
-                GRID.removeFilledRowRange(range);
-            }
-            case KeyEvent.VK_3 ->
-            {
-                GRID.triggerLandslide(range);
-                range = null;
-            }
+        case KeyEvent.VK_ENTER ->
+        {
+            range = GRID.getFilledRowRange();
+            GRID.removeFilledRowRange(range);
+            GRID.triggerLandslide(range);
+            range = null;
+        }
+        case KeyEvent.VK_F1 -> fillGrid1();
+        case KeyEvent.VK_F2 -> fillGrid2();
+        case KeyEvent.VK_F3 -> fillGrid3();
+        case KeyEvent.VK_F4 -> fillGrid4();
+        case KeyEvent.VK_1 ->
+        {
+            range = GRID.getFilledRowRange();
+        }
+        case KeyEvent.VK_2 ->
+        {
+            GRID.removeFilledRowRange(range);
+        }
+        case KeyEvent.VK_3 ->
+        {
+            GRID.triggerLandslide(range);
+            range = null;
+        }
         }
     }
 
