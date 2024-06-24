@@ -82,6 +82,12 @@ public abstract class Tetromino
         return !isOwnBlockPosition(x, y) && grid.isTaken(x, y);
     }
 
+    public void addGrid(Grid grid)
+    {
+        this.grid = grid;
+        addBlocksToGrid();
+    }
+
     protected void addBlocksToGrid()
     {
         if (grid == null)

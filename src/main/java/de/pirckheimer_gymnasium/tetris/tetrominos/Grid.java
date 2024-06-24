@@ -47,7 +47,7 @@ public class Grid
         return true;
     }
 
-    public FilledRowRange getFilledRowRang()
+    public FilledRowRange getFilledRowRange()
     {
         int from = -1;
         int to = -1;
@@ -72,7 +72,7 @@ public class Grid
         }
     }
 
-    private void clearRow(int y)
+    public void clearRow(int y)
     {
         for (int x = 0; x < getWidth(); x++)
         {
@@ -97,6 +97,10 @@ public class Grid
 
     public void removeFilledRowRange(FilledRowRange range)
     {
+        if (range == null)
+        {
+            return;
+        }
         for (int y = range.getFrom(); y <= range.getTo(); y++)
         {
             clearRow(y);
@@ -111,7 +115,11 @@ public class Grid
      */
     public void triggerLandslide(FilledRowRange range)
     {
-        for (int y = range.getTo(); y < getHeight(); y++)
+        if (range == null)
+        {
+            return;
+        }
+        for (int y = range.getTo() + 1; y < getHeight(); y++)
         {
             for (int x = 0; x < getWidth(); x++)
             {
