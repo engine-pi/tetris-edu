@@ -20,14 +20,27 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     private Tetromino previewTetromino;
 
+    private final int[] GB_FRAMES_PER_ROW = {53,49,45,41,37,33,28,22,17,11,10,9,8,7,6,6,5,5,4,4,3};
+
+    private final double GB_FRAME_RATE = 59.73;
+
+    private int level = 0;
+
     public IngameScene()
     {
         super("ingame");
         grid = new Grid(Tetris.GRID_WIDTH, Tetris.HEIGHT + 1);
         createNextTetromino();
-        repeat(0.2, () -> {
+        repeat(calculateDownInterval(), () -> {
             moveDown();
         });
+    }
+
+    /**
+     * interval / 53 = 1 / 59.73 -> interval = 1 / 59.73 * 53
+     */
+    private double calculateDownInterval() {
+        return 1.0 / GB_FRAME_RATE * GB_FRAMES_PER_ROW[level];
     }
 
     private void moveDown()
