@@ -5,6 +5,7 @@ import de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater;
 import de.pirckheimer_gymnasium.tetris.Tetris;
 import de.pirckheimer_gymnasium.tetris.tetrominos.FilledRowRange;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Grid;
+import de.pirckheimer_gymnasium.tetris.tetrominos.SoftDrop;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Tetromino;
 
 import java.awt.event.KeyEvent;
@@ -31,6 +32,8 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     private PressedKeyRepeater keyRepeater;
 
+    private SoftDrop softDrop;
+
     public IngameScene()
     {
         super("ingame");
@@ -39,14 +42,31 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         repeat(calculateDownInterval(), () -> {
             moveDown();
         });
-        keyRepeater = new PressedKeyRepeater(0.08, 0.15);
+        keyRepeater = new PressedKeyRepeater(0.06, 0.15);
         keyRepeater.addListener(KeyEvent.VK_LEFT, () -> {
             tetromino.moveLeft();
         });
-        keyRepeater = new PressedKeyRepeater(0.08, 0.15);
         keyRepeater.addListener(KeyEvent.VK_RIGHT, () -> {
             tetromino.moveRight();
         });
+
+
+        keyRepeater.addListener(KeyEvent.VK_DOWN,
+                // initial
+                () -> {
+                     softDrop = new SoftDrop(tetromino);
+
+        },
+                // repeated
+                () -> {
+                    tetromino.moveDown();
+                },
+                // final
+                () -> {
+                    softDrop = null;
+                });
+
+
     }
 
     /**
