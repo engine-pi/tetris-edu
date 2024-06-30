@@ -1,6 +1,8 @@
 package de.pirckheimer_gymnasium.tetris.scenes;
 
+import de.pirckheimer_gymnasium.engine_pi.actor.Rectangle;
 import de.pirckheimer_gymnasium.engine_pi.event.KeyStrokeListener;
+import de.pirckheimer_gymnasium.engine_pi.event.PeriodicTaskExecutor;
 import de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater;
 import de.pirckheimer_gymnasium.tetris.Tetris;
 import de.pirckheimer_gymnasium.tetris.tetrominos.FilledRowRange;
@@ -8,6 +10,7 @@ import de.pirckheimer_gymnasium.tetris.tetrominos.Grid;
 import de.pirckheimer_gymnasium.tetris.tetrominos.SoftDrop;
 import de.pirckheimer_gymnasium.tetris.tetrominos.Tetromino;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
@@ -32,6 +35,8 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     private PressedKeyRepeater keyRepeater;
 
+    private PeriodicTaskExecutor periodicTask;
+
     private SoftDrop softDrop;
 
     public IngameScene()
@@ -39,24 +44,21 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         super("ingame");
         grid = new Grid(Tetris.GRID_WIDTH, Tetris.HEIGHT + 1);
         createNextTetromino();
-        repeat(calculateDownInterval(), () -> {
+        periodicTask = repeat(calculateDownInterval(), () -> {
             moveDown();
         });
         keyRepeater = new PressedKeyRepeater(0.06, 0.15);
         keyRepeater.addListener(KeyEvent.VK_LEFT, () -> {
-            tetromino.moveLeft();
+            moveLeft();
         });
         keyRepeater.addListener(KeyEvent.VK_RIGHT, () -> {
-            tetromino.moveRight();
+            moveRight();
         });
-
-
         keyRepeater.addListener(KeyEvent.VK_DOWN,
                 // initial
                 () -> {
-                     softDrop = new SoftDrop(tetromino);
-
-        },
+                    softDrop = new SoftDrop(tetromino);
+                },
                 // repeated
                 () -> {
                     tetromino.moveDown();
@@ -65,8 +67,6 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
                 () -> {
                     softDrop = null;
                 });
-
-
     }
 
     /**
@@ -77,17 +77,64 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         return 1.0 / GB_FRAME_RATE * GB_FRAMES_PER_ROW[level];
     }
 
+    private void moveLeft() {
+        if (tetromino.moveLeft()) {
+            // sound
+        }
+    }
+
+    private void moveRight() {
+        if (tetromino.moveRight()) {
+            // sound
+        }
+    }
+
     private void moveDown()
     {
         if (!tetromino.moveDown())
         {
             FilledRowRange range = grid.getFilledRowRange();
-            if (range != null) {
-                grid.removeFilledRowRange(range);
-                grid.triggerLandslide(range);
+            if (range != null)
+            {
+
             }
             createNextTetromino();
         }
+    }
+
+    private void clearLines(FilledRowRange range) {
+        Rectangle overlay = addRectangle(10, range.getRowCount(), 0, range.getFrom());
+        overlay.setColor(Color.GRAY);
+        overlay.setVisible(false);
+        periodicTask.pause();
+        repeat(0.167, 8, (counter) -> {
+
+            switch(counter) {
+                case 1:
+                case 3:
+                case 5:
+                    overlay.setVisible(true);
+                    break;
+
+                case 2:
+                case 4:
+                case 6:
+                    overlay.setVisible(false);
+                    break;
+
+                case 7:
+                    grid.removeFilledRowRange(range);
+                    break;
+
+                case 8:
+                    grid.triggerLandslide(range);
+                    remove(overlay);
+                    createNextTetromino();
+                    periodicTask.resume();
+                    break;
+            }
+        });
+
     }
 
     private void createNextTetromino()
