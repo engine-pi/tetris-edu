@@ -49,14 +49,11 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         keyRepeater.addListener(KeyEvent.VK_RIGHT, () -> {
             tetromino.moveRight();
         });
-
-
         keyRepeater.addListener(KeyEvent.VK_DOWN,
                 // initial
                 () -> {
-                     softDrop = new SoftDrop(tetromino);
-
-        },
+                    softDrop = new SoftDrop(tetromino);
+                },
                 // repeated
                 () -> {
                     tetromino.moveDown();
@@ -65,8 +62,6 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
                 () -> {
                     softDrop = null;
                 });
-
-
     }
 
     /**
@@ -82,7 +77,8 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         if (!tetromino.moveDown())
         {
             FilledRowRange range = grid.getFilledRowRange();
-            if (range != null) {
+            if (range != null)
+            {
                 grid.removeFilledRowRange(range);
                 grid.triggerLandslide(range);
             }

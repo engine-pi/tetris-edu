@@ -1,7 +1,9 @@
 package de.pirckheimer_gymnasium.tetris.tetrominos;
 
-public class SoftDrop {
+public class SoftDrop
+{
     private final int y;
+
     private final Tetromino tetromino;
 
     public SoftDrop(Tetromino tetromino)
@@ -10,7 +12,8 @@ public class SoftDrop {
         this.tetromino = tetromino;
     }
 
-    public int getDistance() {
+    public int getDistance()
+    {
         return y - tetromino.getY();
     }
 }
