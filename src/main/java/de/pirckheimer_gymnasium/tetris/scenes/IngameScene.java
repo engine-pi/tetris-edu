@@ -14,6 +14,7 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 
 import de.pirckheimer_gymnasium.engine_pi.event.PressedKeyRepeater;
+import de.pirckheimer_gymnasium.tetris.text.NumberDisplay;
 
 public class IngameScene extends BaseScene implements KeyStrokeListener
 {
@@ -37,12 +38,11 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
             11, 10, 9, 8, 7, 6, 6, 5, 5, 4, 4, 3 };
 
     private final double GB_FRAME_RATE = 59.73;
+    private NumberDisplay score;
 
-    private int level = 0;
+    private NumberDisplay level;
 
-    private int score = 0;
-
-    private int clearedLines = 0;
+    private NumberDisplay clearedLines;
 
     private boolean isInAnimation;
 
@@ -50,6 +50,11 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
     {
         super("ingame");
         grid = new Grid(Tetris.GRID_WIDTH, Tetris.HEIGHT + 1);
+
+        score = new NumberDisplay(this, 13,14, 4);
+        level = new NumberDisplay(this, 12,10, 4);
+        clearedLines = new NumberDisplay(this, 12,7, 4);
+
         createNextTetromino();
         periodicTask = repeat(calculateDownInterval(), (counter) -> { // Geschwindigkeit
             if (softDrop == null)
@@ -57,6 +62,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
                 moveDown();
             }
         });
+
         keyRepeater = new PressedKeyRepeater();
         keyRepeater.addListener(KeyEvent.VK_LEFT, this::moveLeft);
         keyRepeater.addListener(KeyEvent.VK_RIGHT, this::moveRight);
@@ -76,7 +82,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     public void setScore(int lines)
     {
-        clearedLines = clearedLines + lines;
+
         int s = 40;
         if (lines == 2)
         {
@@ -90,9 +96,9 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         {
             s = 1200;
         }
-        score = score + s * (lines + 1);
-        // 0 - 9 = level 0; 10 - 19 = Level 1; ...
-        level = clearedLines / 10;
+        clearedLines.add(lines);
+        level.set(clearedLines.get() / 10);
+        score.add(s * (level.get() + 1));
     }
 
     /**
@@ -100,7 +106,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
      */
     private double calculateDownInterval()
     {
-        return 1.0 / GB_FRAME_RATE * GB_FRAMES_PER_ROW[level];
+        return 1.0 / GB_FRAME_RATE * GB_FRAMES_PER_ROW[level.get()];
     }
 
     private void moveLeft()
@@ -135,7 +141,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         {
             if (softDrop != null)
             {
-                score = score + softDrop.getDistance();
+                score.add(softDrop.getDistance());
             }
             keyRepeater.stop();
             Sound.playBlockDrop();
@@ -157,7 +163,8 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
     }
 
     public void rotate() {
-        if (isInAnimation) {
+        if (isInAnimation)
+        {
             return;
         }
         if (tetromino.rotate()) {
