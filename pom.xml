@@ -18,7 +18,11 @@
     <dependency>
       <groupId>de.pirckheimer-gymnasium</groupId>
       <artifactId>engine-pi</artifactId>
+<<<<<<< HEAD
+      <version>0.21.0</version>
+=======
       <version>0.22.0</version>
+>>>>>>> 284edb91a66f40e7d37bfa102398966d20dd41b0
     </dependency>
 
     <dependency>
