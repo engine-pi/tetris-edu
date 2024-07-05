@@ -10,6 +10,7 @@ public class TitleScene extends BaseScene implements KeyStrokeListener
     public TitleScene()
     {
         super("title");
+        Sound.playTitle();
     }
 
     public void onKeyDown(KeyEvent e)

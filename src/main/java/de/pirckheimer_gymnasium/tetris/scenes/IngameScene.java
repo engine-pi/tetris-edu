@@ -44,16 +44,19 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     private int clearedLines = 0;
 
+    private boolean isInAnimation;
+
     public IngameScene()
     {
         super("ingame");
         grid = new Grid(Tetris.GRID_WIDTH, Tetris.HEIGHT + 1);
         createNextTetromino();
-        periodicTask = repeat(calculateDownInterval(), () -> { // Geschwindigkeit
-            // des nach unten
-            // Bewegens
-            moveDown();
-        }); // Lambda Ausdruck
+        periodicTask = repeat(calculateDownInterval(), (counter) -> { // Geschwindigkeit
+            if (softDrop == null)
+            {
+                moveDown();
+            }
+        });
         keyRepeater = new PressedKeyRepeater();
         keyRepeater.addListener(KeyEvent.VK_LEFT, this::moveLeft);
         keyRepeater.addListener(KeyEvent.VK_RIGHT, this::moveRight);
@@ -68,6 +71,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
                 }, () -> {
                     softDrop = null;
                 });
+        Sound.playKorobeiniki();
     }
 
     public void setScore(int lines)
@@ -101,6 +105,9 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     private void moveLeft()
     {
+        if (isInAnimation) {
+            return;
+        }
         if (tetromino.moveLeft())
         {
             Sound.playBlockMove();
@@ -109,6 +116,9 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     private void moveRight()
     {
+        if (isInAnimation) {
+            return;
+        }
         if (tetromino.moveRight())
         {
             Sound.playBlockMove();
@@ -117,33 +127,60 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
 
     private void moveDown()
     {
+        if (isInAnimation) {
+            return;
+        }
+        // Tetromino ist unten angekommen
         if (!tetromino.moveDown())
         {
             if (softDrop != null)
             {
                 score = score + softDrop.getDistance();
             }
+            keyRepeater.stop();
+            Sound.playBlockDrop();
+            softDrop = null;
             FilledRowRange range = grid.getFilledRowRange();
             if (range != null)
             {
-                grid.removeFilledRowRange(range);
-                grid.triggerLandslide(range);
-                setScore(range.getRowCount());
+                clearLines(range);
             }
-            System.out.println("Score = " + score);
-            System.out.println("Reihen = " + clearedLines);
-            System.out.println("Level = " + level);
-            createNextTetromino();
+            else
+            {
+                System.out.println("Score = " + score);
+                System.out.println("Reihen = " + clearedLines);
+                System.out.println("Level = " + level);
+                createNextTetromino();
+            }
+
+        }
+    }
+
+    public void rotate() {
+        if (isInAnimation) {
+            return;
+        }
+        if (tetromino.rotate()) {
+            Sound.playBlockRotate();
         }
     }
 
     private void clearLines(FilledRowRange range)
     {
+        isInAnimation = true;
         Rectangle overlay = addRectangle(10, range.getRowCount(), 0,
                 range.getFrom());
-        overlay.setColor(Color.GRAY);
+        overlay.setColor(Tetris.COLOR_SCHEME_GREEN.getLight());
         overlay.setVisible(false);
         periodicTask.pause();
+        if (range.getRowCount() < 4)
+        {
+            Sound.playRowClear1to3();
+        }
+        else
+        {
+            Sound.playRowClear4();
+        }
         repeat(0.167, 8, (counter) -> {
             switch (counter)
             {
@@ -168,6 +205,10 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
                     remove(overlay);
                     createNextTetromino();
                     periodicTask.resume();
+                    setScore(range.getRowCount());
+                    Sound.playBlockDrop();
+                    periodicTask.setInterval(calculateDownInterval());
+                    isInAnimation = false;
                     break;
             }
         });
@@ -193,9 +234,7 @@ public class IngameScene extends BaseScene implements KeyStrokeListener
         switch (event.getKeyCode())
         {
             case KeyEvent.VK_SPACE:
-                if (tetromino.rotate()) {
-                    Sound.playBlockRotate();
-                }
+                rotate();
                 break;
         }
     }

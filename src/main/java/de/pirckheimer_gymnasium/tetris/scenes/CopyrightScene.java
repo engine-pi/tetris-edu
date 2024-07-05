@@ -26,6 +26,6 @@ public class CopyrightScene extends BaseScene implements KeyStrokeListener
 
     public static void main(String[] args)
     {
-        Tetris.start(new CopyrightScene(), true);
+        Tetris.start(new CopyrightScene());
     }
 }
