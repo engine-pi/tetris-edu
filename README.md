@@ -117,7 +117,6 @@ Soft-Drop-Bewegung.[^harddrop_scoring] [^gamespot]
 [^harddrop_scoring]: https://harddrop.com/wiki/Scoring
 [^gamespot]: https://gamefaqs.gamespot.com/gameboy/585960-tetris/faqs/8483
 
-
 ### Animation bei getilgten Zeilen
 
 Folgendes Bild zeigt eine im Programm Gimp geöffnete animierte PNG-Datei. In
@@ -142,6 +141,32 @@ dieser Animation ist zu sehen, wie eine Zeile getilgt wird.
 GBS-Dateien: [ocremix.org](https://ocremix.org/chip/265) [zophar.net](https://www.zophar.net/music/gameboy-gbs/tetris)
 
 [gbsplay](https://github.com/mmitch/gbsplay)
+
+
+| Title                     | Composer                 | Arranger        |
+| :------------------------ | :----------------------- | :-------------- |
+| Title Screen              | Hirokazu Tanaka          | Hirokazu Tanaka |
+| A-Type (V1.0)             | Hirokazu Tanaka          | Hirokazu Tanaka |
+| A-Type (V1.1) Korobeiniki | Traditional              | Hirokazu Tanaka |
+| B-Type                    | Hirokazu Tanaka          | Hirokazu Tanaka |
+| C-Type French Suite No. 3 | Johann Sebastian Bach    | Hirokazu Tanaka |
+| Game Over                 | Hirokazu Tanaka          | Hirokazu Tanaka |
+| Success!                  | Tommy Walker             | Hirokazu Tanaka |
+| Trepak 1                  | Pyotr Ilyich Tchaikovsky | Hirokazu Tanaka |
+| Trepak 2                  | Pyotr Ilyich Tchaikovsky | Hirokazu Tanaka |
+| Trepak 3                  | Pyotr Ilyich Tchaikovsky | Hirokazu Tanaka |
+| Trepak 4                  | Pyotr Ilyich Tchaikovsky | Hirokazu Tanaka |
+| Trepak 5                  | Pyotr Ilyich Tchaikovsky | Hirokazu Tanaka |
+| Trepak 6                  | Pyotr Ilyich Tchaikovsky | Hirokazu Tanaka |
+| Rocket Blastoff           | Hirokazu Tanaka          | Hirokazu Tanak  |
+| High Scores               | Hirokazu Tanaka          | Hirokazu Tanaka |
+| Toréador Song             | Georges Bizet            | Hirokazu Tanaka |
+| 2 Player ~ End of Round   | Hirokazu Tanaka          | Hirokazu Tanaka |
+| 2 Player ~ Results        | Hirokazu Tanaka          | Hirokazu Tanaka |
+
+[^vgmp-recording]
+
+[^vgmp-recording]: https://www.vgmpf.com/Wiki/index.php?title=Tetris_(GB)#Recording
 
 https://github.com/niuhuan/gbc-swing/blob/master/src/main/java/gbc/Speaker.java
 
