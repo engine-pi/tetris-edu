@@ -2,8 +2,8 @@ package de.pirckheimer_gymnasium.tetris.scenes;
 
 import de.pirckheimer_gymnasium.engine_pi.Jukebox;
 
-public class Sound {
-
+public class Sound
+{
     private static void playMusic(String filename)
     {
         Jukebox.playMusic("sounds/" + filename);
@@ -14,8 +14,10 @@ public class Sound {
         Jukebox.playSound("sounds/" + filename);
     }
 
-    public static void playTitle() {
-        Jukebox.playIntroTrack("sounds/Title_intro.mp3", "sounds/Title_loop.mp3");
+    public static void playTitle()
+    {
+        Jukebox.playIntroTrack("sounds/Title_intro.mp3",
+                "sounds/Title_loop.mp3");
     }
 
     public static void playKorobeiniki()
